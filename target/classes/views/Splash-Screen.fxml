@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="766.0" prefWidth="1368.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="screen.SplashScreenHandler">
+   <children>
+      <AnchorPane prefHeight="768.0" prefWidth="1366.0">
+         <children>
+            <ImageView fitHeight="244.0" fitWidth="278.0" layoutX="580.0" layoutY="264.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="258.0" AnchorPane.leftAnchor="580.0" AnchorPane.rightAnchor="613.0341491699219" AnchorPane.topAnchor="264.0">
+               <image>
+                  <Image url="@../assets/image/eco_bike_logo.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="logo" fitHeight="244.0" fitWidth="531.0" layoutX="454.0" layoutY="246.0">
+               <image>
+                  <Image url="@../assets/image/eco_bike_logo.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>
