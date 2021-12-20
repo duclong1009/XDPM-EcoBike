@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="170.0" prefWidth="660.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <GridPane prefHeight="170.0" prefWidth="451.0" style="-fx-blend-mode: YELLOW;">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Text layoutX="29.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
+                  <Label layoutX="113.0" layoutY="20.0" prefHeight="17.0" prefWidth="60.0" text="Label" />
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+               <children>
+                  <Text layoutX="29.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Station" />
+                  <Label layoutX="116.0" layoutY="17.0" prefHeight="17.0" prefWidth="60.0" text="Label" />
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+               <children>
+                  <Text layoutX="28.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Staus" />
+                  <Label layoutX="118.0" layoutY="17.0" prefHeight="17.0" prefWidth="60.0" text="Label" />
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                  <Text layoutX="20.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time" />
+                  <Label layoutX="128.0" layoutY="20.0" prefHeight="17.0" prefWidth="60.0" text="Label" />
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <children>
+                  <Text layoutX="14.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total fee" />
+                  <Label layoutX="124.0" layoutY="20.0" prefHeight="17.0" prefWidth="60.0" text="Label" />
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+               <children>
+                  <Text layoutX="14.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Deposit fee" />
+                  <Label layoutX="128.0" layoutY="21.0" prefHeight="17.0" prefWidth="60.0" text="Label" />
+               </children>
+            </Pane>
+         </children>
+      </GridPane>
+      <Button layoutX="489.0" layoutY="31.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="111.0" text="Copy barcode" />
+      <Button layoutX="489.0" layoutY="96.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="111.0" text="Pause" />
+   </children>
+</AnchorPane>

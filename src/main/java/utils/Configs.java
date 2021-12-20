@@ -49,6 +49,7 @@ public class Configs {
 	public static final String RESULT_SCREEN_PATH = "/views/Result-Screen.fxml";
 	public static final String SPLASH_SCREEN_PATH = "/views/Splash-Screen.fxml";
 	public static final String STATION_DETAILS_SCREEN_PATH = "/src/main/resources/views/Station-Details-Screen.fxml";
+	public static final String BIKE_SCREEN = "/views/Bike.fxml";
 	public static Font REGULAR_FONT = Font.font("Segoe UI", FontWeight.NORMAL, FontPosture.REGULAR, 24);
 
 }

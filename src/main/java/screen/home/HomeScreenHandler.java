@@ -19,6 +19,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import screen.BaseScreenHandler;
+import screen.RentBike.BarcodeHandler;
+import screen.ViewRentBike.ViewRentBikeHandler;
 import utils.Configs;
 import utils.Utils;
 //import views.screen.BaseScreenHandler;
@@ -34,7 +36,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 
     @FXML
     private TextField searchField;
-//
+
     @FXML
     private SplitMenuButton searchMenu;
 
@@ -77,6 +79,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
                 LOGGER.info("User clicked to view rent bike");
                 viewRentBikeHandler = new ViewRentBikeHandler(this.stage,Configs.RENTAL_BIKE_SCREEN_PATH);
                 viewRentBikeHandler.setBController(new ViewRentBikeController());
+                viewRentBikeHandler.setHomeScreenHandler(this);
                 viewRentBikeHandler.requestToViewRentBike(this);
             } catch (Exception ex) {
                 ex.printStackTrace();
@@ -89,6 +92,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
                 LOGGER.info(("User clicked to Rent Bike"));
                 barcodeHandler = new BarcodeHandler(this.stage,Configs.BAR_CODE_SCREEN);
                 barcodeHandler.setBController(new BarcodeController());
+                barcodeHandler.setHomeScreenHandler(this);
                 barcodeHandler.requestToBarCodeScreen(this);
             }
             catch (Exception ex) {
@@ -96,6 +100,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
             }
 
         });
+
     }
 
     public void setImage() {
