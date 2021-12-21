@@ -10,6 +10,7 @@ import javafx.util.Duration;
 import utils.Configs;
 import screen.home.HomeScreenHandler;
 
+
 import java.io.IOException;
 
 public class App extends Application {
