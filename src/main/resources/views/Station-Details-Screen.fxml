@@ -18,7 +18,7 @@
          <children>
             <Pane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <ImageView fitHeight="100.0" fitWidth="133.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="logo" fitHeight="100.0" fitWidth="133.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </Pane>
          </children>

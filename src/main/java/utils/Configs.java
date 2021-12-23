@@ -42,7 +42,7 @@ public class Configs {
 	public static final String BIKE_STATION_PATH = "/views/Bike-Station-Screen.fxml";
 	public static final String IMAGE_PATH = "/assets/image";
 	public static final String BAR_CODE_SCREEN = "/views/Barcode-Form.fxml";
-//	public static final String BIKE_DETAILS_SCREEN_PATH = "/views/Bike-Details-Screen.fxml";
+	public static final String BIKE_DETAILS_SCREEN_PATH = "/views/Bike-Details-Screen.fxml";
 	public static final String DEPOSIT_FORM_PATH = "/views/Deposit-Form.fxml";
 	public static final String ERROR_NOTIFICATION_PATH = "/views/Error-Notification.fxml";
 	public static final String HOME_PATH  = "/views/Home-Screen.fxml";
