@@ -1,4 +1,4 @@
-package screen.RentBike;
+package screen.barcode;
 
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;

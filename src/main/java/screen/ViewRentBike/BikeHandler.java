@@ -1,4 +1,4 @@
-package screen.RentBike;
+package screen.ViewRentBike;
 
 import screen.FXMLScreenHandler;
 import utils.Utils;
@@ -6,6 +6,9 @@ import utils.Utils;
 import java.io.IOException;
 import java.util.logging.Logger;
 
+/**
+ * Man hinh Bike nho trong man hinh RenBike
+ */
 public class BikeHandler extends FXMLScreenHandler {
 
     /**

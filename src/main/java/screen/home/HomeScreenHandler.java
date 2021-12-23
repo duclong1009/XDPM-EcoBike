@@ -3,6 +3,8 @@ package screen.home;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
@@ -17,10 +19,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import screen.BaseScreenHandler;
-import screen.RentBike.BarcodeHandler;
+import screen.ViewRentBike.BikeHandler;
+import screen.barcode.BarcodeHandler;
 import screen.ViewRentBike.ViewRentBikeHandler;
+import screen.station.ViewStationDetailsHandler;
 import utils.Configs;
 import utils.Utils;
 //import views.screen.BaseScreenHandler;
@@ -48,10 +54,40 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 
     @FXML
     private Button returnBikeHere6;
-
+    @FXML
+    private HBox hBox;
+    @FXML
+    private VBox vBox1;
+    @FXML
+    private VBox vBox2;
     public HomeScreenHandler(Stage stage, String screenPath) throws IOException {
         super(stage, screenPath);
+        ArrayList medium = new ArrayList<>();
+        for(int i = 0; i <6;i++) {
+            medium.add(new StationScreenHandler(stage,Configs.STATION_SCREEN_PATH));
+        }
+        addStationHome(medium);
     }
+
+    public void addStationHome(List items) {
+        ArrayList stationList = (ArrayList)((ArrayList) items).clone();
+        hBox.getChildren().forEach(node -> {
+            VBox vBox = (VBox) node;
+            vBox.getChildren().clear();
+        });
+        while (!stationList.isEmpty()) {
+            hBox.getChildren().forEach(node -> {
+                int vid = hBox.getChildren().indexOf(node);
+                VBox vBox = (VBox) node;
+                while(vBox.getChildren().size()<3 && !stationList.isEmpty()){
+                    StationScreenHandler media = (StationScreenHandler) stationList.get(0);
+                    vBox.getChildren().add(media.getContent());
+                    stationList.remove(media);
+                }
+            });
+        }
+    }
+
 
     public HomeController getBController() {
         return (HomeController) super.getBController();
@@ -61,12 +97,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
     public void initialize(URL arg0, ResourceBundle arg1) {
         setBController(new HomeController());
         try {
-//            List medium = getBController().getAllMedia();
-//            this.homeItems = new ArrayList<>();
-//            for (Object object : medium) {
-//                Media media = (Media)object;
-//                MediaHandler m1 = new MediaHandler(Configs.HOME_MEDIA_PATH, media, this);
-//                this.homeItems.add(m1);
+
             System.out.println("init home screen");
 //            }
         } catch (Exception e) {
