@@ -15,6 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
+/**
+ * Lop handler Station-Details-Screen man hinh sau khi bam vao view details tu man hinh home.
+ */
 public class ViewStationDetailsHandler extends BaseScreenHandler {
 
     public static Logger LOGGER = Utils.getLogger(ViewStationDetailsHandler.class.getName());
@@ -31,7 +34,8 @@ public class ViewStationDetailsHandler extends BaseScreenHandler {
         this.home = new HomeScreenHandler(stage,Configs.HOME_PATH);
         logo.setOnMouseClicked(e -> {
             LOGGER.info("User clicked Logo to return Home screen");
-            homeScreenHandler.show();
+            setScreenTitle("Home");
+            home.show();
         });
         ArrayList medium = new ArrayList<>();
         for(int i = 0; i <6;i++) {

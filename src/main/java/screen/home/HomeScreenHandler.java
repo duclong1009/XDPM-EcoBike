@@ -23,16 +23,16 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import screen.BaseScreenHandler;
-import screen.ViewRentBike.BikeHandler;
 import screen.barcode.BarcodeHandler;
-import screen.ViewRentBike.ViewRentBikeHandler;
-import screen.station.ViewStationDetailsHandler;
+import screen.ViewRentingBike.ViewRentBikeHandler;
 import utils.Configs;
 import utils.Utils;
 //import views.screen.BaseScreenHandler;
 //import views.screen.cart.CartScreenHandler;
 
-
+/**
+ * Man hinh home xu ly Home-Screen
+ */
 public class HomeScreenHandler extends BaseScreenHandler implements Initializable {
 
     public static Logger LOGGER = Utils.getLogger(HomeScreenHandler.class.getName());
@@ -107,7 +107,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
         viewRentBike.setOnMouseClicked(e -> {
             ViewRentBikeHandler viewRentBikeHandler;
             try{
-                LOGGER.info("User clicked to view rent bike");
+                LOGGER.info("User clicked to view renting bike");
                 viewRentBikeHandler = new ViewRentBikeHandler(this.stage,Configs.RENTAL_BIKE_SCREEN_PATH);
                 viewRentBikeHandler.setBController(new ViewRentBikeController());
                 viewRentBikeHandler.setHomeScreenHandler(this);
@@ -124,6 +124,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
                 barcodeHandler = new BarcodeHandler(this.stage,Configs.BAR_CODE_SCREEN);
                 barcodeHandler.setBController(new BarcodeController());
                 barcodeHandler.setHomeScreenHandler(this);
+                barcodeHandler.setPreviousScreen(this);
                 barcodeHandler.requestToBarCodeScreen(this);
             }
             catch (Exception ex) {

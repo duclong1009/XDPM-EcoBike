@@ -1,5 +1,8 @@
-package screen.ViewRentBike;
+package screen.ViewRentingBike;
 
+import javafx.fxml.FXML;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import screen.FXMLScreenHandler;
 import utils.Utils;
 
@@ -15,6 +18,8 @@ public class BikeHandler extends FXMLScreenHandler {
      * @param screenPath
      * @throws IOException
      */
+    @FXML
+    private ImageView logo;
     public BikeHandler(String screenPath) throws IOException {
         super(screenPath);
     }

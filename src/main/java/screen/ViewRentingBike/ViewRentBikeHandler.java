@@ -1,4 +1,4 @@
-package screen.ViewRentBike;
+package screen.ViewRentingBike;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.SplitMenuButton;
@@ -26,10 +26,6 @@ public class ViewRentBikeHandler extends BaseScreenHandler {
     private TextField search;
 
     @FXML
-    private VBox vbox1;
-    @FXML
-    private VBox vbox2;
-    @FXML
     private SplitMenuButton searchMenu;
 
     public static Logger LOGGER = Utils.getLogger(ViewRentBikeHandler.class.getName());
@@ -37,37 +33,19 @@ public class ViewRentBikeHandler extends BaseScreenHandler {
         super(stage, screenPath);
         logo.setOnMouseClicked(e -> {
             LOGGER.info("User clicked Logo to return Home screen");
+            setScreenTitle("Home");
             homeScreenHandler.show();
         });
-        ArrayList medium = new ArrayList<>();
-        for(int i = 0; i <6;i++) {
-            medium.add(new BikeHandler(Configs.BIKE_SCREEN));
-        }
-
-        addBikeHome(medium);
+        addBikeHome();
     }
 
-    public void addBikeHome(List items) {
-        ArrayList bikeList = (ArrayList)((ArrayList) items).clone();
-        hbox.getChildren().forEach(node -> {
-            VBox vBox = (VBox) node;
-            vBox.getChildren().clear();
-        });
-        while (!bikeList.isEmpty()) {
-            hbox.getChildren().forEach(node -> {
-                int vid = hbox.getChildren().indexOf(node);
-                VBox vBox = (VBox) node;
-                while(vBox.getChildren().size()<3 && !bikeList.isEmpty()){
-                    BikeHandler media = (BikeHandler) bikeList.get(0);
-                    vBox.getChildren().add(media.getContent());
-                    bikeList.remove(media);
-                }
-            });
-        }
+    public void addBikeHome() throws IOException {
+        BikeHandler bikeHandler = new BikeHandler(Configs.BIKE_SCREEN);
+        hbox.getChildren().add(bikeHandler.getContent());
     }
+
     public void requestToViewRentBike(BaseScreenHandler prevScreen) {
         setPreviousScreen(prevScreen);
         setScreenTitle("View Rent Bike");
         show();}
-
 }

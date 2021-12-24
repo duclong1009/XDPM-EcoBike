@@ -12,6 +12,9 @@ import utils.Configs;
 
 import java.io.IOException;
 
+/**
+ * Man hinh Bike trong ViewStationDetailsHandler
+ */
 public class BikeScreenHandler extends FXMLScreenHandler {
     /**
      * @param screenPath

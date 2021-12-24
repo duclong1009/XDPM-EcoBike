@@ -39,8 +39,8 @@
       </HBox>
       <AnchorPane layoutX="12.0" layoutY="110.0" prefHeight="644.0" prefWidth="979.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="110.0">
          <children>
-            <TextField layoutX="368.0" layoutY="236.0" prefHeight="74.0" prefWidth="610.0" />
-            <Button layoutX="612.0" layoutY="480.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="122.0" style="-fx-background-color: RED;" text="Submit" textFill="WHITE">
+            <TextField fx:id="barcode" layoutX="368.0" layoutY="236.0" prefHeight="74.0" prefWidth="610.0" />
+            <Button fx:id="submit" layoutX="612.0" layoutY="480.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="122.0" style="-fx-background-color: RED;" text="Submit" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
