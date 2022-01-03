@@ -9,23 +9,23 @@ import java.util.logging.Logger;
 import java.sql.Connection;
 import utils.*;
 
-public class AIMSDB {
+public class CapstoneDB {
 
     private static Logger LOGGER = Utils.getLogger(Connection.class.getName());
-    private static Connection connect;
+    private static Connection connection;
 
     public static Connection getConnection() {
-        if (connect != null) return connect;
+        if (connection != null) return connection;
         try {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "tan", "251120");
             LOGGER.info("Connect database successfully");
         } catch (Exception e) {
             LOGGER.info(e.getMessage());
         }
-        return connect;
+        return connection;
     }
 
     public static void main(String[] args) {
-        AIMSDB.getConnection();
+        CapstoneDB.getConnection();
     }
 }
