@@ -18,7 +18,10 @@ public class Bike {
     protected int id;
     protected String bikeName;
     protected float pin;
-    protected int status; // the real price of product (eg: 450)
+    protected int status;
+    protected Category category;
+    protected Station station;
+
 
     public Bike getBikeById(int id) throws SQLException{
         String sql = "SELECT * FROM bike " + "where id=" + id + ";";
@@ -75,7 +78,13 @@ public class Bike {
     public void setStatus(int status) {
         this.status = status;
     }
+    public Category getCategory() {
+        return category;
+    }
 
+    public Station getStation() {
+        return station;
+    }
     public Bike(int id, String bikeName, float pin, int status) {
         this.id = id;
         this.bikeName = bikeName;
