@@ -7,7 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-import entity.db.capstoneDB;
+import entity.db.CapstoneDB;
+import entity.category.Category;
+import entity.station.Station;
 import utils.Utils;
 
 public class Bike {
@@ -25,14 +27,15 @@ public class Bike {
 
     public Bike getBikeById(int id) throws SQLException{
         String sql = "SELECT * FROM bike " + "where id=" + id + ";";
-        Statement stm = AIMSDB.getConnection().createStatement();
+        Statement stm = CapstoneDB.getConnection().createStatement();
         ResultSet res = stm.executeQuery(sql);
         if(res.next()) {
-            return new Bike()
-                    .setId(res.getInt("id"))
-                    .setBikeName(res.getString("bike"))
-                    .setPin(res.getFloat("pin"))
-                    .setStatus(res.getInt("status"))
+            Bike b = new Bike();
+            b.setId(id);
+            b.setBikeName(res.getString("bikeName"));
+            b.setPin(res.getFloat("pin"));
+            b.setStatus(res.getInt("status"));
+            return b;
         }
         return null;
     }
@@ -85,6 +88,15 @@ public class Bike {
     public Station getStation() {
         return station;
     }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public void setStation(Station station) {
+        this.station = station;
+    }
+
     public Bike(int id, String bikeName, float pin, int status) {
         this.id = id;
         this.bikeName = bikeName;
@@ -97,6 +109,6 @@ public class Bike {
     }
 
     public Bike() throws SQLException {
-        stm = capstoneDB.getConnection().createStatement();
+        stm = CapstoneDB.getConnection().createStatement();
     }
 }

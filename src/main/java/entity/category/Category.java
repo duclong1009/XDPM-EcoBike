@@ -1,10 +1,9 @@
 package entity.category;
 
 import java.util.List;
+import entity.bike.Bike;
 
-public class Category implements Serializable {
-    private static final long serialVersionUID = 1L;
-
+public class Category {
 
     private int id;
     private float costPerHour;

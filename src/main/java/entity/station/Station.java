@@ -1,6 +1,7 @@
 package entity.station;
 
 import java.util.List;
+import entity.bike.Bike;
 
 public class Station{
     private int id;
