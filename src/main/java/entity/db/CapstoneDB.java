@@ -16,7 +16,6 @@ public class CapstoneDB {
     public static Connection getConnection() {
         if (connection != null) return connection;
         try {
-//            Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "251120");
             LOGGER.info("Connect database successfully");
         } catch (Exception e) {
