@@ -15,15 +15,23 @@ import utils.Utils;
 public class Bike {
 
     private static Logger LOGGER = Utils.getLogger(Bike.class.getName());
-
-    protected Statement stm;
     protected int id;
     protected String bikeName;
     protected float pin;
     protected int status;
-    protected Category category;
-    protected Station station;
+    protected int category_id;
+    protected int station_id;
 
+    public Bike() {}
+
+    public Bike(int id, String bike_name, float pin, int status, int category_id , int station_id) {
+        this.id = id;
+        this.bikeName = bike_name;
+        this.pin = pin;
+        this.status = status;
+        this.category_id =category_id;
+        this.station_id = station_id;
+    }
 
     public Bike getBikeById(int id) throws SQLException{
         String sql = "SELECT * FROM bike " + "where id=" + id + ";";
@@ -32,16 +40,24 @@ public class Bike {
         ResultSet res = stm.executeQuery(sql);
         if(res.next()) {
             System.out.println("Not null");
-            Bike b = new Bike();
-            b.setId(id);
-            b.setBikeName(res.getString("bike_name"));
-            b.setPin(res.getFloat("pin"));
-            b.setStatus(res.getInt("status"));
+            Bike b = new Bike(res.getInt("id"), res.getString("bike_name"), res.getFloat("pin"), res.getInt("Status"), res.getInt("category_id"), res.getInt("station_id"));
             return b;
         }
         return null;
     }
 
+    public List<Bike> getAllBike(int stationID) throws SQLException {
+        String query = "SELECT * FROM bike " + "where station_id=" + stationID + ";";
+        Statement stm = CapstoneDB.getConnection().createStatement();
+        ResultSet res = stm.executeQuery(query);
+        ArrayList bikeList = new ArrayList();
+        while(res.next()) {
+            LOGGER.info("Exist bike query!!");
+            Bike b = new Bike(res.getInt("id"), res.getString("bike_name"), res.getFloat("pin"), res.getInt("Status"), res.getInt("category_id"), res.getInt("station_id"));
+            bikeList.add(b);
+        }
+        return bikeList;
+    }
     @java.lang.Override
     public java.lang.String toString() {
         return "Bike{" +
@@ -83,36 +99,27 @@ public class Bike {
     public void setStatus(int status) {
         this.status = status;
     }
-    public Category getCategory() {
-        return category;
+    public int getCategory() {
+        return category_id;
     }
 
-    public Station getStation() {
-        return station;
+    public int getStationID() {
+        return station_id;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setCategory(int category) {
+        this.category_id = category;
     }
 
-    public void setStation(Station station) {
-        this.station = station;
+    public void setStation(int station) {
+        this.station_id = station;
     }
 
-    public Bike(int id, String bikeName, float pin, int status) {
-        this.id = id;
-        this.bikeName = bikeName;
-        this.pin = pin;
-        this.status = status;
-    }
 
     public static void setLOGGER(Logger LOGGER) {
         Bike.LOGGER = LOGGER;
     }
 
-    public Bike() throws SQLException {
-        stm = CapstoneDB.getConnection().createStatement();
-    }
 
     public static void main(String[] args) throws SQLException {
         Bike bike = new Bike();
