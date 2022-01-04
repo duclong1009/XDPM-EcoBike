@@ -3,6 +3,7 @@ package screen.home;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -14,6 +15,7 @@ import controller.HomeController;
 //import entity.cart.Cart;
 //import entity.media.Media;
 import controller.ViewRentBikeController;
+import entity.station.Station;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -60,13 +62,19 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
     private VBox vBox1;
     @FXML
     private VBox vBox2;
-    public HomeScreenHandler(Stage stage, String screenPath) throws IOException {
+    public HomeScreenHandler(Stage stage, String screenPath) throws IOException, SQLException {
         super(stage, screenPath);
-        ArrayList medium = new ArrayList<>();
-        for(int i = 0; i <6;i++) {
-            medium.add(new StationScreenHandler(stage,Configs.STATION_SCREEN_PATH));
+        this.setBController(new HomeController());
+        List stationList = getBController().getAllStation();
+        List stationHandler = new ArrayList<>();
+        for(Object object : stationList) {
+            Station st = (Station) object;
+            stationHandler.add(new StationScreenHandler(stage,Configs.STATION_SCREEN_PATH, st));
         }
-        addStationHome(medium);
+//        for(int i = 0; i <6;i++) {
+//            medium.add(new StationScreenHandler(stage,Configs.STATION_SCREEN_PATH));
+//        }
+        addStationHome(stationHandler);
     }
 
     public void addStationHome(List items) {

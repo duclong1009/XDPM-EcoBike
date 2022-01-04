@@ -27,9 +27,11 @@ public class Bike {
 
     public Bike getBikeById(int id) throws SQLException{
         String sql = "SELECT * FROM bike " + "where id=" + id + ";";
+        System.out.println("query : " + sql);
         Statement stm = CapstoneDB.getConnection().createStatement();
         ResultSet res = stm.executeQuery(sql);
         if(res.next()) {
+            System.out.println("Not null");
             Bike b = new Bike();
             b.setId(id);
             b.setBikeName(res.getString("bike_name"));
@@ -44,7 +46,7 @@ public class Bike {
     public java.lang.String toString() {
         return "Bike{" +
                 ", id=" + id +
-                ", bikeName='" + bikeName + '\'' +
+                ", bike_name='" + bikeName + '\'' +
                 ", pin=" + pin +
                 ", status=" + status +
                 '}';
@@ -110,5 +112,11 @@ public class Bike {
 
     public Bike() throws SQLException {
         stm = CapstoneDB.getConnection().createStatement();
+    }
+
+    public static void main(String[] args) throws SQLException {
+        Bike bike = new Bike();
+        bike = bike.getBikeById(1);
+        System.out.println(bike.bikeName);
     }
 }

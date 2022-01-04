@@ -7,6 +7,7 @@ import screen.home.HomeScreenHandler;
 import utils.Configs;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class BikeDetailsScreen extends BaseScreenHandler {
 
@@ -16,7 +17,7 @@ public class BikeDetailsScreen extends BaseScreenHandler {
 
     }
 
-    public void requestViewBikeDetail() throws IOException {
+    public void requestViewBikeDetail() throws IOException, SQLException {
 //        setPreviousScreen();
         setScreenTitle("View Bike Details");
         setHomeScreenHandler(new HomeScreenHandler(this.stage, Configs.HOME_PATH));

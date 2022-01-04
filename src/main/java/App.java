@@ -9,12 +9,10 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import utils.Configs;
 import screen.home.HomeScreenHandler;
-import java.sql.Connection;
-import java.sql.Statement;
 
-import java.sql.ResultSet;
+import java.sql.*;
+
 import java.io.IOException;
-import java.sql.DriverManager;
 
 public class App extends Application {
 
@@ -56,7 +54,7 @@ public class App extends Application {
 					homeHandler.setScreenTitle("Home Screen");
 					homeHandler.setImage();
 					homeHandler.show();
-				} catch (IOException ex) {
+				} catch (IOException | SQLException ex) {
 					ex.printStackTrace();
 				}
 //
