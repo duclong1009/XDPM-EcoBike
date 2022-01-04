@@ -1,5 +1,6 @@
 package screen.station;
 
+import entity.bike.Bike;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -8,10 +9,12 @@ import javafx.stage.Stage;
 import screen.FXMLScreenHandler;
 import screen.bike.BikeDetailsScreen;
 import utils.Configs;
+import utils.Utils;
 
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.logging.Logger;
 
 /**
  * Man hinh Bike trong ViewStationDetailsHandler
@@ -30,17 +33,28 @@ public class BikeScreenHandler extends FXMLScreenHandler {
     private Label bikeName;
     @FXML
     private ImageView bikeImage;
-    public BikeScreenHandler(Stage stage, String screenPath) throws IOException {
+
+    private Bike bike;
+    public static Logger LOGGER = Utils.getLogger(BikeScreenHandler.class.getName());
+    public BikeScreenHandler(Stage stage, String screenPath, Bike bike) throws IOException, SQLException {
         super(screenPath);
+        this.bike = bike;
 
         viewDetails.setOnMouseClicked(e-> {
             try {
+                LOGGER.info("User clicked view bike details");
                 BikeDetailsScreen bikeDetailsScreen = new BikeDetailsScreen(stage, Configs.BIKE_DETAILS_SCREEN_PATH);
                 bikeDetailsScreen.requestViewBikeDetail();
             } catch (IOException | SQLException ex) {
                 ex.printStackTrace();
             }
         });
+        setBikeInfo();
+    }
+
+    public void setBikeInfo() throws  SQLException {
+        bikeName.setText(this.bike.getBikeName());
+
     }
 
 }

@@ -5,10 +5,16 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
+
 import entity.bike.Bike;
 import entity.db.CapstoneDB;
+import utils.Utils;
 
 public class Station{
+
+    private static Logger LOGGER = Utils.getLogger(Station.class.getName());
+
     private int id;
     private String address;
     private String name;
@@ -74,18 +80,18 @@ public class Station{
 
         return bike;
     }
-    public List<Bike> getAllBike() throws SQLException {
-        ArrayList listB = new ArrayList<>();
-        int stationID = this.id;
-        String query = "SELECT id FROM bike " + "where id=" + id + ";";
-        Statement stm = CapstoneDB.getConnection().createStatement();
-        ResultSet res = stm.executeQuery(query);
-        if(res.next()) {
-            listB.add(new Bike().getBikeById(Integer.parseInt(res.getString(id))));
-            System.out.println("+1");
-        }
-        return listB;
-    }
+//    public List<Bike> getAllBike() throws SQLException {
+//        ArrayList listB = new ArrayList<>();
+//        int stationID = this.id;
+//        String query = "SELECT id FROM bike " + "where id=" + id + ";";
+//        Statement stm = CapstoneDB.getConnection().createStatement();
+//        ResultSet res = stm.executeQuery(query);
+//        while(res.next()) {
+//            LOGGER.info("Exist Station query!!!");
+//            listB.add(new Bike().getBikeById(Integer.parseInt(res.getString(id))));
+//        }
+//        return listB;
+//    }
     public Bike removeBike(Bike bike) {
         getBikeList().remove(bike);
 
@@ -103,11 +109,11 @@ public class Station{
         return stationList;
     }
 
-    public static void main(String[] args) throws SQLException {
-        Station st = new Station();
-        List<Station> listStation = st.getAllStation();
-        for (Station station : listStation) {
-            System.out.println(station.getName());
-        }
-    }
+//    public static void main(String[] args) throws SQLException {
+//        Station st = new Station();
+//        List<Station> listStation = st.getAllStation();
+//        for (Station station : listStation) {
+//            System.out.println(station.getName());
+//        }
+//    }
 }

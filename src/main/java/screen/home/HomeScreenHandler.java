@@ -64,6 +64,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
     private VBox vBox2;
     public HomeScreenHandler(Stage stage, String screenPath) throws IOException, SQLException {
         super(stage, screenPath);
+        LOGGER.info("Open Home Screen");
         this.setBController(new HomeController());
         List stationList = getBController().getAllStation();
         List stationHandler = new ArrayList<>();
