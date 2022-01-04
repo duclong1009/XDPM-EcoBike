@@ -32,7 +32,7 @@ public class Bike {
         if(res.next()) {
             Bike b = new Bike();
             b.setId(id);
-            b.setBikeName(res.getString("bikeName"));
+            b.setBikeName(res.getString("bike_name"));
             b.setPin(res.getFloat("pin"));
             b.setStatus(res.getInt("status"));
             return b;
