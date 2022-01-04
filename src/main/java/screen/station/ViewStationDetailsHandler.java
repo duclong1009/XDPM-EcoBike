@@ -11,6 +11,7 @@ import utils.Configs;
 import utils.Utils;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -29,7 +30,7 @@ public class ViewStationDetailsHandler extends BaseScreenHandler {
     private ImageView logo;
 
     private  HomeScreenHandler home;
-    public ViewStationDetailsHandler(Stage stage, String screenPath) throws IOException {
+    public ViewStationDetailsHandler(Stage stage, String screenPath) throws IOException, SQLException {
         super(stage, screenPath);
         this.home = new HomeScreenHandler(stage,Configs.HOME_PATH);
         logo.setOnMouseClicked(e -> {

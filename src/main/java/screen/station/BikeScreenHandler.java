@@ -11,6 +11,7 @@ import utils.Configs;
 
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 /**
  * Man hinh Bike trong ViewStationDetailsHandler
@@ -36,7 +37,7 @@ public class BikeScreenHandler extends FXMLScreenHandler {
             try {
                 BikeDetailsScreen bikeDetailsScreen = new BikeDetailsScreen(stage, Configs.BIKE_DETAILS_SCREEN_PATH);
                 bikeDetailsScreen.requestViewBikeDetail();
-            } catch (IOException ex) {
+            } catch (IOException | SQLException ex) {
                 ex.printStackTrace();
             }
         });
