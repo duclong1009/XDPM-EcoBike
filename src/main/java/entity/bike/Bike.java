@@ -115,8 +115,8 @@ public class Bike {
         this.station_id = station;
     }
 
-    public List<Bike>  findNameBike(String search) throws SQLException {
-        String query = "SELECT * FROM bike " + "where bike_name LIKE '%" + search + "%';";
+    public List<Bike>  findNameBike(String search,String s_id) throws SQLException {
+        String query = "SELECT * FROM bike " + "where bike_name LIKE '%" + search + "%' AND station_id = "+ s_id +";";
         System.out.println(query);
         Statement stm = CapstoneDB.getConnection().createStatement();
         ResultSet res = stm.executeQuery(query);
@@ -125,6 +125,7 @@ public class Bike {
             LOGGER.info("Exist bike query!!");
             Bike b = new Bike(res.getInt("id"), res.getString("bike_name"), res.getFloat("pin"), res.getInt("Status"), res.getInt("category_id"), res.getInt("station_id"));
             bikeList.add(b);
+            System.out.println("Len res " + bikeList.size());
         }
         return bikeList;
     }
@@ -133,8 +134,8 @@ public class Bike {
     public static void main(String[] args) throws SQLException {
         Bike bike = new Bike();
 //        bike = bike.getBikeById(1);
-        List list = bike.findNameBike("Xe Đạp");
-        Bike bk = (Bike) list.get(0);
-        System.out.println(bk.getBikeName());
+//        List list = bike.findNameBike("Xe Đạp");
+//        Bike bk = (Bike) list.get(0);
+//        System.out.println(bk.getBikeName());
     }
 }

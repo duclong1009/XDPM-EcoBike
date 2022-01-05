@@ -21,4 +21,8 @@ public class HomeController extends BaseController {
     public List getAllStation() throws  SQLException {
         return new Station().getAllStation();
     }
+
+    public List getSearchBike(String searchText, String  s_id) throws  SQLException {
+        return  new Bike().findNameBike(searchText,s_id);
+    }
 }
