@@ -38,9 +38,10 @@ public class Configs {
 	public static float PERCENT_VAT = 10;
 
 	// static resource
+	public static final String POPUP_PATH = "/views/popup.fxml";
 	public static final String STATION_SCREEN_PATH = "/views/Station-Screen.fxml";
 	public static final String BIKE_STATION_PATH = "/views/Bike-Station-Screen.fxml";
-	public static final String IMAGE_PATH = "/assets/image";
+	public static final String IMAGE_PATH = "src/main/resources/assets/image";
 	public static final String BAR_CODE_SCREEN = "/views/Barcode-Form.fxml";
 	public static final String BIKE_DETAILS_SCREEN_PATH = "/views/Bike-Details-Screen.fxml";
 	public static final String DEPOSIT_FORM_PATH = "/views/Deposit-Form.fxml";

@@ -53,11 +53,12 @@ public class BikeScreenHandler extends FXMLScreenHandler {
             }
         });
         copyBarcode.setOnMouseClicked(e -> {
-            LOGGER.info("User clicked copy barcode");
-            String myString = bike.getBikeName();
-            StringSelection stringSelection = new StringSelection(myString);
-            Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-            clipboard.setContents(stringSelection, null);
+            try {
+                LOGGER.info("User clicked copy barcode");
+                Utils.copyToClipBoard(String.valueOf(bike.getId()));
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
         });
         setBikeInfo();
     }

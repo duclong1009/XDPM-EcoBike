@@ -17,25 +17,20 @@
    <children>
       <HBox layoutY="-2.0" prefHeight="98.0" prefWidth="1289.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <AnchorPane prefHeight="96.0" prefWidth="1257.0" style="-fx-border-color: grey;" HBox.hgrow="ALWAYS">
+            <Pane prefHeight="98.0" prefWidth="1361.0">
                <children>
-                  <ImageView blendMode="MULTIPLY" fitHeight="82.0" fitWidth="84.0" layoutX="14.0" layoutY="8.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="1268.0" AnchorPane.topAnchor="8.0">
-                     <image>
-                        <Image url="@logo.png" />
-                     </image>
-                  </ImageView>
-                  <Label layoutX="122.0" layoutY="12.0" text="Deposit" textFill="#009bff">
+                  <Label layoutX="187.0" layoutY="13.0" text="Deposit" textFill="#009bff">
                      <font>
                         <Font name="System Bold" size="50.0" />
                      </font>
                   </Label>
-                  <Button layoutX="1233.0" layoutY="21.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="122.0" style="-fx-background-color: green;" text="Back" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="25.0" />
-                     </font>
-                  </Button>
+                  <ImageView fitHeight="98.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@logo" />
+                     </image>
+                  </ImageView>
                </children>
-            </AnchorPane>
+            </Pane>
          </children>
       </HBox>
       <AnchorPane layoutX="12.0" layoutY="110.0" prefHeight="644.0" prefWidth="979.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="110.0">

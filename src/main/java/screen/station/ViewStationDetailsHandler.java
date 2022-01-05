@@ -7,16 +7,19 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import screen.BaseScreenHandler;
 import screen.home.HomeScreenHandler;
+import screen.popup.PopupScreen;
 import utils.Configs;
 import utils.Utils;
 
 import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -57,6 +60,7 @@ public class ViewStationDetailsHandler extends BaseScreenHandler {
     public ViewStationDetailsHandler(Stage stage, String screenPath, Station station) throws IOException, SQLException {
 
         super(stage, screenPath);
+        setImage();
         LOGGER.info("Opening ViewStationDetail");
         this.station = station;
         System.out.println("Station ID" +station.getId());
@@ -86,10 +90,16 @@ public class ViewStationDetailsHandler extends BaseScreenHandler {
             try {
                 List bikeListSearch = ((HomeController) getBController()).getSearchBike(searchStr, String.valueOf(station.getId()));
                 List bikeSearchHandler = new ArrayList<>();
-                for (Object object : bikeListSearch) {
-                    bikeSearchHandler.add(new BikeScreenHandler(stage,Configs.BIKE_STATION_PATH,(Bike) object));
+                if(bikeListSearch.size() ==0) {
+                    PopupScreen.error("Khong co xe nao phu hop");
                 }
-                addBikeStation((bikeSearchHandler));
+                else {
+                    for (Object object : bikeListSearch) {
+                        bikeSearchHandler.add(new BikeScreenHandler(stage,Configs.BIKE_STATION_PATH,(Bike) object));
+                    }
+                    addBikeStation((bikeSearchHandler));
+                }
+
             } catch (SQLException | IOException ex) {
                 ex.printStackTrace();
             }
@@ -122,6 +132,11 @@ public class ViewStationDetailsHandler extends BaseScreenHandler {
         locationName.setText(this.station.getAddress());
     }
 
+    public void setImage() {
+        File file1 = new File(Configs.IMAGE_PATH + "/eco.png");
+        Image img1 = new Image(file1.toURI().toString());
+        logo.setImage(img1);
+    }
     public void requestToViewStationDetails() {
     setScreenTitle("View Station Details");
     setHomeScreenHandler(this.home);
