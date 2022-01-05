@@ -2,7 +2,7 @@ package entity.transaction;
 
 import entity.db.CapstoneDB;
 import entity.user.User;
-
+import java.util.ArrayList;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -60,20 +60,46 @@ public class Transaction {
     }
 
     public Transaction getTransactionById(int id) throws SQLException {
-        String sql = "SELECT * FROM transaction " + "where transaction_id=" + id + ";";
-        Statement stm = CapstoneDB.getConnection().createStatement();
-        ResultSet res = stm.executeQuery(sql);
-        if(res.next()) {
-            System.out.println("Not null");
-            Transaction tr = new Transaction();
-            tr.setTransactionId(res.getInt("transaction_id"));
-            tr.setRentDuration(res.getFloat("rented_duration"));
-            tr.setTotalPayment(res.getFloat("total_payment"));
-            tr.setContent(res.getString("content"));
-            User u = new User();
-            User u1 = u.getUserById(res.getInt("user_id"));
-            tr.setUser(u1);
-            return tr;
+        try {
+            String sql = "SELECT * FROM transaction " + "where transaction_id=" + id + ";";
+            Statement stm = CapstoneDB.getConnection().createStatement();
+            ResultSet res = stm.executeQuery(sql);
+            if(res.next()) {
+                Transaction tr = new Transaction();
+                tr.setTransactionId(res.getInt("transaction_id"));
+                tr.setRentDuration(res.getFloat("rented_duration"));
+                tr.setTotalPayment(res.getFloat("total_payment"));
+                tr.setContent(res.getString("content"));
+                User u = new User();
+                User u1 = u.getUserById(res.getInt("user_id"));
+                tr.setUser(u1);
+                return tr;
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
+    public ArrayList<Transaction> getAllTransaction() throws SQLException{
+        try {
+            String sql = "SELECT * FROM transaction ;";
+            Statement stm = CapstoneDB.getConnection().createStatement();
+            ArrayList<Transaction> qq = new ArrayList<>();
+            ResultSet res = stm.executeQuery(sql);
+            if(res.next()){
+                Transaction tr = new Transaction();
+                tr.setTransactionId(res.getInt("transaction_id"));
+                tr.setRentDuration(res.getFloat("rented_duration"));
+                tr.setTotalPayment(res.getFloat("total_payment"));
+                tr.setContent(res.getString("content"));
+                User u = new User();
+                User u1 = u.getUserById(res.getInt("user_id"));
+                tr.setUser(u1);
+                qq.add(tr);
+            }
+            return qq;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
         return null;
     }
