@@ -1,5 +1,11 @@
 package utils;
 
+import screen.popup.PopupScreen;
+
+import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -67,6 +73,13 @@ public class Utils {
 			digest = "";
 		}
 		return digest;
+	}
+
+	public static void copyToClipBoard(String text) throws IOException {
+		StringSelection stringSelection = new StringSelection(text);
+		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+		clipboard.setContents(stringSelection, null);
+		PopupScreen.success("Copy barcode to clipboard successfully");
 	}
 
 }

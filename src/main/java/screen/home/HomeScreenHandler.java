@@ -27,11 +27,12 @@ import javafx.stage.Stage;
 import screen.BaseScreenHandler;
 import screen.barcode.BarcodeHandler;
 import screen.ViewRentingBike.ViewRentBikeHandler;
+import screen.popup.PopupScreen;
 import utils.Configs;
 import utils.Utils;
 //import views.screen.BaseScreenHandler;
 //import views.screen.cart.CartScreenHandler;
-
+import screen.popup.PopupScreen;
 /**
  * Man hinh home xu ly Home-Screen
  */
@@ -66,6 +67,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 
     public HomeScreenHandler(Stage stage, String screenPath) throws IOException, SQLException {
         super(stage, screenPath);
+        setImage();
         LOGGER.info("Open Home Screen");
         List stationList = getBController().getAllStation();
         List stationHandler = new ArrayList<>();
@@ -78,19 +80,22 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
             stationHandler.add(new StationScreenHandler(stage,Configs.STATION_SCREEN_PATH, st));
         }
         addStationHome(stationHandler);
-
         searchMenu.setOnMouseClicked(e -> {
             try {
-
                 String searchStr = searchField.getText();
-
                 List stationListSearch = getBController().getSearchStation(searchStr);
                 List stationHandlerSearch = new ArrayList<>();
-                for(Object object : stationListSearch) {
-                    Station st = (Station) object;
-                    stationHandlerSearch.add(new StationScreenHandler(stage,Configs.STATION_SCREEN_PATH, st));
+                if(stationListSearch.size() == 0) {
+                    PopupScreen.error("Không có bãi xe phù hợp");
                 }
-                addStationHome(stationHandlerSearch);
+                else {
+                    for(Object object : stationListSearch) {
+                        Station st = (Station) object;
+                        stationHandlerSearch.add(new StationScreenHandler(stage,Configs.STATION_SCREEN_PATH, st));
+                    }
+                    addStationHome(stationHandlerSearch);
+                }
+
             } catch (SQLException ex) {
                 ex.printStackTrace();
             } catch (IOException ex) {
@@ -127,14 +132,6 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         setBController(new HomeController());
-        try {
-
-            System.out.println("init home screen");
-//            }
-        } catch (Exception e) {
-            LOGGER.info("Errors occured: " + e.getMessage());
-            e.printStackTrace();
-        }
         viewRentBike.setOnMouseClicked(e -> {
             ViewRentBikeHandler viewRentBikeHandler;
             try{
@@ -163,13 +160,11 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
             }
 
         });
-
     }
 
     public void setImage() {
-//        fix image path caused by fxml
-        File file1 = new File("/assets/image/eco_bike_logo.jpg");
-//        System.out.println(file1.toURI().toString());
+        File file1 = new File(Configs.IMAGE_PATH + "/eco.png");
+        System.out.println(file1.toURI().toString());
         Image img1 = new Image(file1.toURI().toString());
         logo.setImage(img1);
     }
