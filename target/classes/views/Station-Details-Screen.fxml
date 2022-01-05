@@ -22,13 +22,13 @@
             </Pane>
          </children>
       </HBox>
-      <HBox fx:id="hBox" layoutY="213.0" prefHeight="556.0" prefWidth="1366.0">
+      <HBox fx:id="hBox" layoutY="213.0" prefHeight="556.0" prefWidth="1366.0" style="-fx-border-color: #33adff;">
          <children>
-            <VBox prefHeight="623.0" prefWidth="680.0" />
-            <VBox prefHeight="582.0" prefWidth="635.0" />
+            <VBox prefHeight="623.0" prefWidth="680.0" style="-fx-border-color: #33adff;" />
+            <VBox prefHeight="554.0" prefWidth="683.0" style="-fx-border-color: #33adff;" />
          </children>
       </HBox>
-      <HBox layoutX="133.0" prefHeight="100.0" prefWidth="1109.0">
+      <HBox layoutX="133.0" prefHeight="100.0" prefWidth="1109.0" style="-fx-border-color: #33adff;">
          <children>
             <Pane prefHeight="100.0" prefWidth="1112.0">
                <children>
@@ -43,9 +43,9 @@
             </Pane>
          </children>
       </HBox>
-      <HBox layoutY="113.0" prefHeight="100.0" prefWidth="680.0">
+      <HBox layoutY="113.0" prefHeight="100.0" prefWidth="680.0" style="-fx-border-color: #33adff;">
          <children>
-            <Pane prefHeight="100.0" prefWidth="686.0">
+            <Pane prefHeight="98.0" prefWidth="687.0">
                <children>
                   <Text layoutX="14.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Station" wrappingWidth="97.341796875">
                      <font>
@@ -57,9 +57,9 @@
             </Pane>
          </children>
       </HBox>
-      <HBox layoutX="683.0" layoutY="113.0" prefHeight="100.0" prefWidth="680.0">
+      <HBox layoutX="677.0" layoutY="113.0" prefHeight="100.0" prefWidth="689.0">
          <children>
-            <Pane prefHeight="100.0" prefWidth="692.0">
+            <Pane prefHeight="100.0" prefWidth="694.0" style="-fx-border-color: #33adff;">
                <children>
                   <Text layoutX="24.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Location" wrappingWidth="97.341796875">
                      <font>
