@@ -2,7 +2,7 @@ CREATE DATABASE  IF NOT EXISTS `ecodb` /*!40100 DEFAULT CHARACTER SET utf8 */ /*
 USE `ecodb`;
 -- MySQL dump 10.13  Distrib 8.0.27, for Win64 (x86_64)
 --
--- Host: localhost    Database: aa
+-- Host: localhost    Database: ecodb
 -- ------------------------------------------------------
 -- Server version	8.0.27
 
@@ -77,38 +77,6 @@ INSERT INTO `category` VALUES (1,'Xe Đạp Đua',25000,1,2),(2,'Xe Đạp Thư�
 UNLOCK TABLES;
 
 --
--- Table structure for table `rent`
---
-
-DROP TABLE IF EXISTS `rent`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `rent` (
-  `id` int NOT NULL,
-  `startTime` timestamp NOT NULL,
-  `endTime` timestamp NOT NULL,
-  `user_id` int NOT NULL,
-  `bike_id` int NOT NULL,
-  `debit` float DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `rentId_UNIQUE` (`id`),
-  KEY `fk_rent_user1_idx` (`user_id`),
-  KEY `fk_rent_bike1_idx` (`bike_id`),
-  CONSTRAINT `fk_rent_bike1` FOREIGN KEY (`bike_id`) REFERENCES `bike` (`id`),
-  CONSTRAINT `fk_rent_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `rent`
---
-
-LOCK TABLES `rent` WRITE;
-/*!40000 ALTER TABLE `rent` DISABLE KEYS */;
-/*!40000 ALTER TABLE `rent` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `station`
 --
 
@@ -144,18 +112,11 @@ DROP TABLE IF EXISTS `transaction`;
 CREATE TABLE `transaction` (
   `transaction_id` int NOT NULL,
   `total_payment` float DEFAULT NULL,
-  `bike_name` varchar(45) DEFAULT NULL,
   `rented_duration` float DEFAULT NULL,
   `user_id` int NOT NULL,
-  `rent_id` int NOT NULL,
-  `bike_id` int NOT NULL,
   `content` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`transaction_id`),
   KEY `fk_transaction_user1_idx` (`user_id`),
-  KEY `fk_transaction_rent1_idx` (`rent_id`),
-  KEY `fk_transaction_bike1_idx` (`bike_id`),
-  CONSTRAINT `fk_transaction_bike1` FOREIGN KEY (`bike_id`) REFERENCES `bike` (`id`),
-  CONSTRAINT `fk_transaction_rent1` FOREIGN KEY (`rent_id`) REFERENCES `rent` (`id`),
   CONSTRAINT `fk_transaction_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -207,4 +168,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-01-05 12:14:00
+-- Dump completed on 2022-01-05 21:13:20
