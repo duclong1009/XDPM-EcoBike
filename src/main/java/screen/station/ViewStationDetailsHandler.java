@@ -4,6 +4,8 @@ import controller.HomeController;
 import entity.bike.Bike;
 import entity.station.Station;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -14,6 +16,7 @@ import screen.home.HomeScreenHandler;
 import utils.Configs;
 import utils.Utils;
 
+import java.awt.*;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -38,6 +41,12 @@ public class ViewStationDetailsHandler extends BaseScreenHandler {
 
     @FXML
     private Text locationName;
+
+    @FXML
+    private TextField searchField;
+
+    @FXML
+    private Button searchButton;
 
 //    @FXML
 //    private Te
@@ -71,6 +80,21 @@ public class ViewStationDetailsHandler extends BaseScreenHandler {
 //        }
         addBikeStation(bikeHandler);
         setStationInfo();
+
+        searchButton.setOnMouseClicked(e-> {
+            String searchStr = searchField.getText();
+            try {
+                List bikeListSearch = ((HomeController) getBController()).getSearchBike(searchStr, String.valueOf(station.getId()));
+                List bikeSearchHandler = new ArrayList<>();
+                for (Object object : bikeListSearch) {
+                    bikeSearchHandler.add(new BikeScreenHandler(stage,Configs.BIKE_STATION_PATH,(Bike) object));
+                }
+                addBikeStation((bikeSearchHandler));
+            } catch (SQLException | IOException ex) {
+                ex.printStackTrace();
+            }
+
+        });
     }
 
     public void addBikeStation(List items) {
