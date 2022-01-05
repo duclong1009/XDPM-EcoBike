@@ -10,7 +10,6 @@ import java.sql.Statement;
 
 public class Transaction {
     private int transactionId;
-    private float rentDuration;
     private float totalPayment;
     private String content;
     private User user;
@@ -22,14 +21,6 @@ public class Transaction {
 
     public void setTransactionId(int transactionId) {
         this.transactionId = transactionId;
-    }
-
-    public Float getRentDuration() {
-        return rentDuration;
-    }
-
-    public void setRentDuration(Float rentDuration) {
-        this.rentDuration = rentDuration;
     }
 
     public float getTotalPayment() {
@@ -67,7 +58,6 @@ public class Transaction {
             if(res.next()) {
                 Transaction tr = new Transaction();
                 tr.setTransactionId(res.getInt("transaction_id"));
-                tr.setRentDuration(res.getFloat("rented_duration"));
                 tr.setTotalPayment(res.getFloat("total_payment"));
                 tr.setContent(res.getString("content"));
                 User u = new User();
@@ -89,7 +79,6 @@ public class Transaction {
             if(res.next()){
                 Transaction tr = new Transaction();
                 tr.setTransactionId(res.getInt("transaction_id"));
-                tr.setRentDuration(res.getFloat("rented_duration"));
                 tr.setTotalPayment(res.getFloat("total_payment"));
                 tr.setContent(res.getString("content"));
                 User u = new User();

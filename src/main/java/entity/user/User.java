@@ -75,12 +75,17 @@ public class User {
     }
 
     public User getUserById(int id) throws SQLException {
-        String sql = "SELECT * FROM user " + "where id=" + id + ";";
-        Statement stm = CapstoneDB.getConnection().createStatement();
-        try (ResultSet res = stm.executeQuery(sql)) {
-            if (res.next()) {
-                return new User(res.getInt("id"), res.getString("name"), res.getString("email"), res.getString("phone"),res.getTimestamp("create_time"));
+        try {
+            String sql = "SELECT * FROM user " + "where id=" + id + ";";
+            Statement stm = CapstoneDB.getConnection().createStatement();
+            try (ResultSet res = stm.executeQuery(sql)) {
+                if (res.next()) {
+                    return new User(res.getInt("id"), res.getString("name"), res.getString("email"), res.getString("phone"), res.getTimestamp("create_time"));
+                }
             }
+        }
+        catch (SQLException ex) {
+            ex.printStackTrace();
         }
         return null;
     }

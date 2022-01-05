@@ -2,8 +2,9 @@ package entity.rent;
 
 import entity.bike.Bike;
 import entity.user.User;
-import java.sql.Timestamp;
 
+import java.sql.SQLException;
+import java.sql.Timestamp;
 
 public class Rent {
     private static Timestamp endTime;
@@ -15,16 +16,16 @@ public class Rent {
         return endTime;
     }
 
-    public static void setEndTime(Timestamp endTime) {
-        Rent.endTime = endTime;
+    public static void setEndTime() {
+        Rent.endTime = new Timestamp(System.currentTimeMillis());
     }
 
     public static Timestamp getStartTime() {
         return startTime;
     }
 
-    public static void setStartTime(Timestamp startTime) {
-        Rent.startTime = startTime;
+    public static void setStartTime() {
+        Rent.startTime = new Timestamp(System.currentTimeMillis());
     }
 
     public static Bike getBike() {
@@ -44,5 +45,9 @@ public class Rent {
     }
 
     public Rent() {
+    }
+    public static int thoigiandathue() throws SQLException {
+        Timestamp endTime = new Timestamp(System.currentTimeMillis());
+        return endTime.getMinutes() - Rent.startTime.getMinutes();
     }
 }
