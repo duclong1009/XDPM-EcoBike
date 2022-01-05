@@ -55,14 +55,14 @@ public class BikeDetailsScreen extends BaseScreenHandler {
             }
 
         });
-//        copyBarcode.setOnMouseClicked(e -> {
-//            try {
-//                String barC = copyBarcode.getText();
-//                Utils.copyToClipBoard(barC);
-//            } catch (IOException ex) {
-//                ex.printStackTrace();
-//            }
-//        });
+        copyBarcode.setOnMouseClicked(e -> {
+            try {
+                int barC = bike.getId();
+                Utils.copyToClipBoard(String.valueOf(barC));
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
     }
 
     public void setInfo(Bike b) {
