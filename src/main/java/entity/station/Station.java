@@ -77,7 +77,7 @@ public class Station{
     public List<Bike> getAllBike() throws SQLException {
         ArrayList listB = new ArrayList<>();
         int stationID = this.id;
-        String query = "SELECT id FROM bike " + "where id=" + id + ";";
+        String query = "SELECT id FROM bike " + "where station_id=" + id + ";";
         Statement stm = CapstoneDB.getConnection().createStatement();
         ResultSet res = stm.executeQuery(query);
         if(res.next()) {
