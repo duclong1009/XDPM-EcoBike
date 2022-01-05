@@ -36,7 +36,7 @@ public class StationScreenHandler extends FXMLScreenHandler {
             LOGGER.info("User clicked view station details");
             ViewStationDetailsHandler viewStationDetailsHandler;
             try {
-                viewStationDetailsHandler = new ViewStationDetailsHandler(homeStage, Configs.STATION_DETAILS_SCREEN_PATH);
+                viewStationDetailsHandler = new ViewStationDetailsHandler(homeStage, Configs.STATION_DETAILS_SCREEN_PATH,station);
                 viewStationDetailsHandler.requestToViewStationDetails();
             } catch (Exception ex) {
                 ex.printStackTrace();

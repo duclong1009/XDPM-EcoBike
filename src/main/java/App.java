@@ -57,8 +57,6 @@ public class App extends Application {
 				} catch (IOException | SQLException ex) {
 					ex.printStackTrace();
 				}
-//
-				System.out.println("Hello");
 			});
 		} catch (Exception e) {
 			System.out.println("Exception e ");
