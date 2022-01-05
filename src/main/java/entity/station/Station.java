@@ -80,18 +80,7 @@ public class Station{
 
         return bike;
     }
-//    public List<Bike> getAllBike() throws SQLException {
-//        ArrayList listB = new ArrayList<>();
-//        int stationID = this.id;
-//        String query = "SELECT id FROM bike " + "where id=" + id + ";";
-//        Statement stm = CapstoneDB.getConnection().createStatement();
-//        ResultSet res = stm.executeQuery(query);
-//        while(res.next()) {
-//            LOGGER.info("Exist Station query!!!");
-//            listB.add(new Bike().getBikeById(Integer.parseInt(res.getString(id))));
-//        }
-//        return listB;
-//    }
+
     public Bike removeBike(Bike bike) {
         getBikeList().remove(bike);
 
@@ -109,6 +98,18 @@ public class Station{
         return stationList;
     }
 
+    public List<Bike>  findNameStation(String search) throws SQLException {
+        String query = "SELECT * FROM station " + "where station_name LIKE '%" + search + "%';";
+        Statement stm = CapstoneDB.getConnection().createStatement();
+        ResultSet res = stm.executeQuery(query);
+        ArrayList stationList = new ArrayList();
+        while(res.next()) {
+            LOGGER.info("Exist station query!!");
+            Station st = new Station(Integer.parseInt(res.getString("id")),res.getString("address"),res.getString("station_name"),res.getString("image_path"));
+            stationList.add(st);
+        }
+        return stationList;
+    }
 //    public static void main(String[] args) throws SQLException {
 //        Station st = new Station();
 //        List<Station> listStation = st.getAllStation();

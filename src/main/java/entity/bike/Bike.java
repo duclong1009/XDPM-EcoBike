@@ -115,15 +115,26 @@ public class Bike {
         this.station_id = station;
     }
 
-
-    public static void setLOGGER(Logger LOGGER) {
-        Bike.LOGGER = LOGGER;
+    public List<Bike>  findNameBike(String search) throws SQLException {
+        String query = "SELECT * FROM bike " + "where bike_name LIKE '%" + search + "%';";
+        System.out.println(query);
+        Statement stm = CapstoneDB.getConnection().createStatement();
+        ResultSet res = stm.executeQuery(query);
+        ArrayList bikeList = new ArrayList();
+        while(res.next()) {
+            LOGGER.info("Exist bike query!!");
+            Bike b = new Bike(res.getInt("id"), res.getString("bike_name"), res.getFloat("pin"), res.getInt("Status"), res.getInt("category_id"), res.getInt("station_id"));
+            bikeList.add(b);
+        }
+        return bikeList;
     }
 
 
     public static void main(String[] args) throws SQLException {
         Bike bike = new Bike();
-        bike = bike.getBikeById(1);
-        System.out.println(bike.bikeName);
+//        bike = bike.getBikeById(1);
+        List list = bike.findNameBike("Xe Đạp");
+        Bike bk = (Bike) list.get(0);
+        System.out.println(bk.getBikeName());
     }
 }

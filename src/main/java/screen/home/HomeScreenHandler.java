@@ -46,7 +46,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
     private TextField searchField;
 
     @FXML
-    private SplitMenuButton searchMenu;
+    private Button searchMenu;
 
     @FXML
     private Button rentBike;
@@ -62,20 +62,42 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
     private VBox vBox1;
     @FXML
     private VBox vBox2;
+
+
     public HomeScreenHandler(Stage stage, String screenPath) throws IOException, SQLException {
         super(stage, screenPath);
         LOGGER.info("Open Home Screen");
-        this.setBController(new HomeController());
         List stationList = getBController().getAllStation();
         List stationHandler = new ArrayList<>();
+        hBox.getChildren().forEach(node -> {
+            VBox vBox = (VBox) node;
+            vBox.getChildren().clear();
+        });
         for(Object object : stationList) {
             Station st = (Station) object;
             stationHandler.add(new StationScreenHandler(stage,Configs.STATION_SCREEN_PATH, st));
         }
-//        for(int i = 0; i <6;i++) {
-//            medium.add(new StationScreenHandler(stage,Configs.STATION_SCREEN_PATH));
-//        }
         addStationHome(stationHandler);
+
+        searchMenu.setOnMouseClicked(e -> {
+            try {
+
+                String searchStr = searchField.getText();
+
+                List stationListSearch = getBController().getSearchStation(searchStr);
+                List stationHandlerSearch = new ArrayList<>();
+                for(Object object : stationListSearch) {
+                    Station st = (Station) object;
+                    stationHandlerSearch.add(new StationScreenHandler(stage,Configs.STATION_SCREEN_PATH, st));
+                }
+                addStationHome(stationHandlerSearch);
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+
+        });
     }
 
     public void addStationHome(List items) {

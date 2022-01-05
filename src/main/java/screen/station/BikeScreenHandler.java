@@ -12,6 +12,9 @@ import utils.Configs;
 import utils.Utils;
 
 
+import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Logger;
@@ -48,6 +51,13 @@ public class BikeScreenHandler extends FXMLScreenHandler {
             } catch (IOException | SQLException ex) {
                 ex.printStackTrace();
             }
+        });
+        copyBarcode.setOnMouseClicked(e -> {
+            LOGGER.info("User clicked copy barcode");
+            String myString = bike.getBikeName();
+            StringSelection stringSelection = new StringSelection(myString);
+            Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+            clipboard.setContents(stringSelection, null);
         });
         setBikeInfo();
     }
