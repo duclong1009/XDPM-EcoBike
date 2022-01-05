@@ -1,11 +1,15 @@
 package screen.home;
 
+import controller.BarcodeController;
+import entity.rent.Rent;
 import entity.station.Station;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import screen.FXMLScreenHandler;
+import screen.barcode.BarcodeHandler;
+import screen.popup.PopupScreen;
 import screen.station.ViewStationDetailsHandler;
 import utils.Configs;
 import utils.Utils;
@@ -41,6 +45,29 @@ public class StationScreenHandler extends FXMLScreenHandler {
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
+        });
+
+        returnBikeHere.setOnMouseClicked(e -> {
+            if (Rent.getBike() == null) {
+                try {
+                    PopupScreen.error("Ban chua thue xe");
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            }
+            else {
+                try {
+                    LOGGER.info(("User clicked to Rent Bike"));
+                    BarcodeHandler barcodeHandler;
+                    barcodeHandler = new BarcodeHandler(homeStage,Configs.BAR_CODE_SCREEN);
+                    barcodeHandler.setBController(new BarcodeController());
+                    barcodeHandler.requestToBarCodeScreen();
+                }
+                catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+
         });
         setStationInfo();
     }

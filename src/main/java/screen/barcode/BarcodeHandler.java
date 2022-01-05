@@ -1,5 +1,6 @@
 package screen.barcode;
 
+import entity.rent.Rent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -9,6 +10,7 @@ import javafx.stage.Stage;
 import screen.BaseScreenHandler;
 import screen.deposit.DepositScreenHandler;
 import screen.home.HomeScreenHandler;
+import screen.popup.PopupScreen;
 import screen.station.ViewStationDetailsHandler;
 import utils.Configs;
 import utils.Utils;
@@ -34,13 +36,39 @@ public class BarcodeHandler extends BaseScreenHandler {
         logo.setOnMouseClicked(e -> {
             LOGGER.info("User clicked Logo to return Home screen");
             setScreenTitle("Home");
-            homeScreenHandler.show();
+            try {
+                new HomeScreenHandler(stage,Configs.HOME_PATH).show();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
         });
         submit.setOnMouseClicked(e -> {
             try {
-                LOGGER.info("Deposit Screen , prev Screen HomeScreen");
-                DepositScreenHandler depositScreenHandler = new DepositScreenHandler(stage, Configs.DEPOSIT_FORM_PATH);
-                depositScreenHandler.requestToDeposit(this);
+                String bc = barcode.getText();
+                if(bc.equals("")) {
+                    PopupScreen.error("Vui lòng nhập barcode");
+                }
+                else {
+                    if(Rent.getBike() != null ) {
+//                        System.out.println(bc);
+//                        System.out.println(Rent.getBike().getId());
+                        if(bc.equals(String.valueOf(Rent.getBike().getId()))) {
+                            PopupScreen.success("Return bike Screen");
+                        }
+                        else {
+                            PopupScreen.error("Nhap sai ma xe");
+                        }
+                    }
+                    else {
+                        LOGGER.info("Deposit Screen");
+                        DepositScreenHandler depositScreenHandler = new DepositScreenHandler(stage, Configs.DEPOSIT_FORM_PATH, bc);
+                        depositScreenHandler.requestToDeposit(this);
+                    }
+
+                }
+
             } catch (IOException ex) {
                 ex.printStackTrace();
             } catch (SQLException ex) {
@@ -56,8 +84,7 @@ public class BarcodeHandler extends BaseScreenHandler {
         logo.setImage(img1);
     }
 
-    public void requestToBarCodeScreen(BaseScreenHandler prevScreen) {
-        setPreviousScreen(prevScreen);
+    public void requestToBarCodeScreen() {
         setScreenTitle("BarCode");
         show(); }
     }
