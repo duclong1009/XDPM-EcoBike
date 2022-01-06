@@ -46,6 +46,7 @@ public class Rent {
 
     public Rent() {
     }
+
     public static int thoigiandathue() throws SQLException {
         Timestamp endTime = new Timestamp(System.currentTimeMillis());
         return endTime.getMinutes() - Rent.startTime.getMinutes();
