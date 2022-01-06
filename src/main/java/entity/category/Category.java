@@ -1,12 +1,10 @@
 package entity.category;
 
-import entity.bike.Bike;
 import entity.db.CapstoneDB;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.List;
 
 public class Category {
 
@@ -15,8 +13,6 @@ public class Category {
     private int nPedals;
     private int nSeats;
     private String name;
-
-    private List<Bike> bikes;
 
     public Category() {
     }
@@ -61,25 +57,7 @@ public class Category {
         this.name = name;
     }
 
-    public List<Bike> getBikes() {
-        return bikes;
-    }
-
-    public void setBikes(List<Bike> bikes) {
-        this.bikes = bikes;
-    }
-
-    public Bike addBike(Bike bike) {
-        getBikes().add(bike);
-
-        return bike;
-    }
-
-    public Bike removeBike(Bike bike) {
-        getBikes().remove(bike);
-
-        return bike;
-    }
+    
     public Category getCategoryById(int id)  throws SQLException{
             String sql = "SELECT * FROM category " + "where id=" + id + ";";
             Statement stm = CapstoneDB.getConnection().createStatement();
