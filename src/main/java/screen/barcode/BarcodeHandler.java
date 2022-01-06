@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 import screen.BaseScreenHandler;
 import screen.deposit.DepositScreenHandler;
 import screen.home.HomeScreenHandler;
+import screen.payment.PaymentScreen;
 import screen.popup.PopupScreen;
 import screen.station.ViewStationDetailsHandler;
 import utils.Configs;
@@ -52,10 +53,9 @@ public class BarcodeHandler extends BaseScreenHandler {
                 }
                 else {
                     if(Rent.getBike() != null ) {
-//                        System.out.println(bc);
-//                        System.out.println(Rent.getBike().getId());
                         if(bc.equals(String.valueOf(Rent.getBike().getId()))) {
-                            PopupScreen.success("Return bike Screen");
+                            PaymentScreen paymentScreen = new PaymentScreen(stage, Configs.PAYMENT_SCREEN_PATH);
+                            paymentScreen.requestPayment();
                         }
                         else {
                             PopupScreen.error("Nhap sai ma xe");
@@ -66,9 +66,7 @@ public class BarcodeHandler extends BaseScreenHandler {
                         DepositScreenHandler depositScreenHandler = new DepositScreenHandler(stage, Configs.DEPOSIT_FORM_PATH, bc);
                         depositScreenHandler.requestToDeposit(this);
                     }
-
                 }
-
             } catch (IOException ex) {
                 ex.printStackTrace();
             } catch (SQLException ex) {
@@ -79,7 +77,6 @@ public class BarcodeHandler extends BaseScreenHandler {
 
     public void setImage() {
         File file1 = new File(Configs.IMAGE_PATH + "/eco.png");
-        System.out.println(file1.toURI().toString());
         Image img1 = new Image(file1.toURI().toString());
         logo.setImage(img1);
     }

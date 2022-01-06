@@ -59,6 +59,7 @@ public class DepositScreenHandler extends BaseScreenHandler {
         setInfo(bike);
         logo.setOnMouseClicked(e-> {
             try {
+                LOGGER.info("User clicked to return Home Screen");
                 this.home = new HomeScreenHandler(stage, Configs.HOME_PATH);
                 setScreenTitle("Home");
                 home.show();
@@ -97,7 +98,6 @@ public class DepositScreenHandler extends BaseScreenHandler {
 
     public void setImage() {
         File file1 = new File(Configs.IMAGE_PATH + "/eco.png");
-        System.out.println(file1.toURI().toString());
         Image img1 = new Image(file1.toURI().toString());
         logo.setImage(img1);
     }
@@ -108,7 +108,6 @@ public class DepositScreenHandler extends BaseScreenHandler {
     public void requestToDeposit(BaseScreenHandler prev) {
         setScreenTitle("Deposit Form");
         setPreviousScreen(prev);
-//        setImage();
         show();
     }
 

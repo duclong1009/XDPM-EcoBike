@@ -70,7 +70,6 @@ public class ViewRentBikeHandler extends BaseScreenHandler {
 
     public void setImage() {
         File file1 = new File(Configs.IMAGE_PATH + "/eco.png");
-        System.out.println(file1.toURI().toString());
         Image img1 = new Image(file1.toURI().toString());
         logo.setImage(img1);
     }
