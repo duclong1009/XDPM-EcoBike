@@ -48,7 +48,7 @@ public class Configs {
 	public static final String ERROR_NOTIFICATION_PATH = "/views/Error-Notification.fxml";
 	public static final String HOME_PATH  = "/views/Home-Screen.fxml";
 	public static final String PAYMENT_SCREEN_PATH = "/views/Payment-Screen.fxml";
-	public static final String RENTAL_BIKE_SCREEN_PATH = "/views/Rental-Bike-Screen.fxml";
+	public static final String RENTAL_BIKE_SCREEN_PATH = "/views/ViewRentingBike.fxml";
 	public static final String RESULT_SCREEN_PATH = "/views/Result-Screen.fxml";
 	public static final String SPLASH_SCREEN_PATH = "/views/Splash-Screen.fxml";
 	public static final String STATION_DETAILS_SCREEN_PATH = "/views/Station-Details-Screen.fxml";

@@ -2,7 +2,11 @@ CREATE DATABASE  IF NOT EXISTS `ecodb` /*!40100 DEFAULT CHARACTER SET utf8 */ /*
 USE `ecodb`;
 -- MySQL dump 10.13  Distrib 8.0.27, for Win64 (x86_64)
 --
+<<<<<<< HEAD
 -- Host: localhost    Database: aa
+=======
+-- Host: localhost    Database: ecodb
+>>>>>>> dd5cbe0de0798db6fb10e5a8def592c8d306245d
 -- ------------------------------------------------------
 -- Server version	8.0.27
 
@@ -77,6 +81,7 @@ INSERT INTO `category` VALUES (1,'Xe Đạp Đua',25000,1,2),(2,'Xe Đạp Thư�
 UNLOCK TABLES;
 
 --
+<<<<<<< HEAD
 -- Table structure for table `rent`
 --
 
@@ -109,6 +114,8 @@ LOCK TABLES `rent` WRITE;
 UNLOCK TABLES;
 
 --
+=======
+>>>>>>> dd5cbe0de0798db6fb10e5a8def592c8d306245d
 -- Table structure for table `station`
 --
 
@@ -144,6 +151,7 @@ DROP TABLE IF EXISTS `transaction`;
 CREATE TABLE `transaction` (
   `transaction_id` int NOT NULL,
   `total_payment` float DEFAULT NULL,
+<<<<<<< HEAD
   `bike_name` varchar(45) DEFAULT NULL,
   `rented_duration` float DEFAULT NULL,
   `user_id` int NOT NULL,
@@ -156,6 +164,13 @@ CREATE TABLE `transaction` (
   KEY `fk_transaction_bike1_idx` (`bike_id`),
   CONSTRAINT `fk_transaction_bike1` FOREIGN KEY (`bike_id`) REFERENCES `bike` (`id`),
   CONSTRAINT `fk_transaction_rent1` FOREIGN KEY (`rent_id`) REFERENCES `rent` (`id`),
+=======
+  `rented_duration` float DEFAULT NULL,
+  `user_id` int NOT NULL,
+  `content` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`transaction_id`),
+  KEY `fk_transaction_user1_idx` (`user_id`),
+>>>>>>> dd5cbe0de0798db6fb10e5a8def592c8d306245d
   CONSTRAINT `fk_transaction_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -207,4 +222,8 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+<<<<<<< HEAD
 -- Dump completed on 2022-01-05 12:14:00
+=======
+-- Dump completed on 2022-01-05 21:13:20
+>>>>>>> dd5cbe0de0798db6fb10e5a8def592c8d306245d

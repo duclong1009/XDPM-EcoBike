@@ -63,7 +63,7 @@ public class ViewStationDetailsHandler extends BaseScreenHandler {
         setImage();
         LOGGER.info("Opening ViewStationDetail");
         this.station = station;
-        System.out.println("Station ID" +station.getId());
+        LOGGER.info("Station ID" +station.getId());
         this.home = new HomeScreenHandler(stage,Configs.HOME_PATH);
         logo.setOnMouseClicked(e -> {
             LOGGER.info("User clicked Logo to return Home screen");
@@ -88,6 +88,7 @@ public class ViewStationDetailsHandler extends BaseScreenHandler {
         searchButton.setOnMouseClicked(e-> {
             String searchStr = searchField.getText();
             try {
+                LOGGER.info("User clicked search");
                 List bikeListSearch = ((HomeController) getBController()).getSearchBike(searchStr, String.valueOf(station.getId()));
                 List bikeSearchHandler = new ArrayList<>();
                 if(bikeListSearch.size() ==0) {

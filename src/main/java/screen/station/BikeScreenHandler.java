@@ -46,7 +46,7 @@ public class BikeScreenHandler extends FXMLScreenHandler {
         viewDetails.setOnMouseClicked(e-> {
             try {
                 LOGGER.info("User clicked view bike details");
-                BikeDetailsScreen bikeDetailsScreen = new BikeDetailsScreen(stage, Configs.BIKE_DETAILS_SCREEN_PATH);
+                BikeDetailsScreen bikeDetailsScreen = new BikeDetailsScreen(stage, Configs.BIKE_DETAILS_SCREEN_PATH,bike);
                 bikeDetailsScreen.requestViewBikeDetail();
             } catch (IOException | SQLException ex) {
                 ex.printStackTrace();

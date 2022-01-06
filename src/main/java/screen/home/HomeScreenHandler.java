@@ -15,6 +15,7 @@ import controller.HomeController;
 //import entity.cart.Cart;
 //import entity.media.Media;
 import controller.ViewRentBikeController;
+import entity.rent.Rent;
 import entity.station.Station;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -131,29 +132,42 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+
         setBController(new HomeController());
         viewRentBike.setOnMouseClicked(e -> {
-            ViewRentBikeHandler viewRentBikeHandler;
-            try{
-                LOGGER.info("User clicked to view renting bike");
-                viewRentBikeHandler = new ViewRentBikeHandler(this.stage,Configs.RENTAL_BIKE_SCREEN_PATH);
-                viewRentBikeHandler.setBController(new ViewRentBikeController());
-                viewRentBikeHandler.setHomeScreenHandler(this);
-                viewRentBikeHandler.requestToViewRentBike(this);
-            } catch (Exception ex) {
-                ex.printStackTrace();
+            if(Rent.getBike() == null) {
+                try {
+                    PopupScreen.error("Chua thue xe");
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
             }
+            else {
+                ViewRentBikeHandler viewRentBikeHandler;
+
+                try{
+                    LOGGER.info("User clicked to view renting bike");
+                    viewRentBikeHandler = new ViewRentBikeHandler(this.stage,Configs.RENTAL_BIKE_SCREEN_PATH);
+//                viewRentBikeHandler.setBController(new ViewRentBikeController());
+                    viewRentBikeHandler.setHomeScreenHandler(this);
+                    viewRentBikeHandler.requestToViewRentBike(this);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+
         });
 
         rentBike.setOnMouseClicked(e-> {
-            BarcodeHandler barcodeHandler;
+
             try {
                 LOGGER.info(("User clicked to Rent Bike"));
+                BarcodeHandler barcodeHandler;
                 barcodeHandler = new BarcodeHandler(this.stage,Configs.BAR_CODE_SCREEN);
                 barcodeHandler.setBController(new BarcodeController());
                 barcodeHandler.setHomeScreenHandler(this);
                 barcodeHandler.setPreviousScreen(this);
-                barcodeHandler.requestToBarCodeScreen(this);
+                barcodeHandler.requestToBarCodeScreen();
             }
             catch (Exception ex) {
                 ex.printStackTrace();
@@ -164,7 +178,6 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 
     public void setImage() {
         File file1 = new File(Configs.IMAGE_PATH + "/eco.png");
-        System.out.println(file1.toURI().toString());
         Image img1 = new Image(file1.toURI().toString());
         logo.setImage(img1);
     }
