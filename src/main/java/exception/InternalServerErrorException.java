@@ -1,4 +1,4 @@
-package checkout.exception;
+package exception;
 
 public class InternalServerErrorException extends PaymentException {
     public InternalServerErrorException() {

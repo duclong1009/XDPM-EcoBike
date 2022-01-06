@@ -1,15 +1,11 @@
-package checkout;
+package interbanksystem;
 
-import checkout.CreditCard;
-import checkout.InterbankInterface;
-import checkout.InterbankSubsystem;
-import checkout.PaymentTransaction;
+import entity.payment.CreditCard;
+import entity.payment.PaymentTransaction;
 import org.json.JSONException;
 
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.HashMap;
-import java.util.Map;
 
 public class TestAPI {
     public static void main(String[] args) throws IOException, JSONException, ParseException {

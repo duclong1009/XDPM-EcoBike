@@ -78,7 +78,7 @@ public class DepositScreenHandler extends BaseScreenHandler {
         submit.setOnMouseClicked(e-> {
 //        int depositBikeFee = Integer.parseInt(depositFee.getText());
             if(depositController.validateCardInfo(cardholderName.getText(),cardNumber.getText(),issuingBank.getText())){
-                CreditCard card = new CreditCard(cardNumber.getText(),cardholderName.getText(),Integer.parseInt(securityCode.getText()), expirationDate.getText());
+                CreditCard card = new CreditCard(cardNumber.getText(),cardholderName.getText(),securityCode.getText(), expirationDate.getText());
                 if( new PaymentController().checkAvailabelPay(card,depositFees)) {
                     try {
                         Rent.setDepositFee(depositFees);

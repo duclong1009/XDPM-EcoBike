@@ -1,8 +1,9 @@
-package checkout.interbanksystem;
+package interbanksystem;
 
-import checkout.CreditCard;
-import checkout.PaymentTransaction;
-import checkout.exception.*;
+import entity.payment.CreditCard;
+import entity.payment.PaymentTransaction;
+//import checkout.exception.*;
+import exception.*;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
