@@ -88,6 +88,7 @@ public class ViewStationDetailsHandler extends BaseScreenHandler {
         searchButton.setOnMouseClicked(e-> {
             String searchStr = searchField.getText();
             try {
+                LOGGER.info("User clicked search");
                 List bikeListSearch = ((HomeController) getBController()).getSearchBike(searchStr, String.valueOf(station.getId()));
                 List bikeSearchHandler = new ArrayList<>();
                 if(bikeListSearch.size() ==0) {

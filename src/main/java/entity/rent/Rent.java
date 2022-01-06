@@ -9,8 +9,8 @@ public class Rent {
     private static Timestamp endTime;
     private static Timestamp startTime;
     private static Bike bike;
-    private static User user;
-
+//    private static User user;
+    public static int testV;
     public static Timestamp getEndTime() {
         return endTime;
     }
@@ -35,13 +35,13 @@ public class Rent {
         Rent.bike = bike;
     }
 
-    public static User getUser() {
-        return user;
-    }
-
-    public static void setUser(User user) {
-        Rent.user = user;
-    }
+//    public static User getUser() {
+//        return user;
+//    }
+//
+//    public static void setUser(User user) {
+//        Rent.user = user;
+//    }
 
     public Rent() {
     }
