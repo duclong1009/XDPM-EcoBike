@@ -31,9 +31,10 @@ CREATE TABLE `bike` (
   `status` tinyint(1) NOT NULL,
   `category_id` int NOT NULL,
   `station_id` int NOT NULL,
+  `image_path` varchar(55) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_bike_category1_idx` (`category_id`),
   KEY `fk_bike_station1_idx` (`station_id`),
+  KEY `fk_bike_category1` (`category_id`),
   CONSTRAINT `fk_bike_category1` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`),
   CONSTRAINT `fk_bike_station1` FOREIGN KEY (`station_id`) REFERENCES `station` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
@@ -45,7 +46,7 @@ CREATE TABLE `bike` (
 
 LOCK TABLES `bike` WRITE;
 /*!40000 ALTER TABLE `bike` DISABLE KEYS */;
-INSERT INTO `bike` VALUES (1,'xe đạp đua ajinomoto',0,1,1,1),(2,'xe đạp mini thống nhất',0,1,2,2),(3,'xe đạp đôi g3c yamaha',0,1,3,1),(4,'xe đạp điện suzuki',80,1,4,2);
+INSERT INTO `bike` VALUES (1,'xe đạp mini thống nhất',NULL,1,2,2,'xe1.jpg'),(2,'xe đạp đôi g3c yamaha',NULL,1,3,1,'xe2.jpg'),(3,'xe đạp điện suzuki',80,1,4,2,'xe3.jpg'),(4,'xe đạp hitasa',NULL,1,2,1,'xe4.jpg'),(5,'xe đạp điện đôi honda',90,1,5,2,'xe5.jpg'),(6,'xe đạp đôi honda',NULL,1,3,1,'xe6.jpg'),(7,'xe đạp mini nhật maruishi',NULL,1,2,3,'xe7.jpg'),(8,'xe đạp thường trumix',NULL,1,2,3,'xe8.jpg'),(9,'xe đạp điện nakxus',75,1,3,3,'xe9.jpg');
 /*!40000 ALTER TABLE `bike` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -72,7 +73,7 @@ CREATE TABLE `category` (
 
 LOCK TABLES `category` WRITE;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` VALUES (1,'Xe Đạp Đua',25000,1,2),(2,'Xe Đạp Thường',15000,2,2),(3,'Xe Đạp Đôi',30000,2,4),(4,'Xe Đạp Điện',35000,2,0);
+INSERT INTO `category` VALUES (2,'Xe Đạp Thường',12000,2,1),(3,'Xe Đạp Đôi',18000,3,2),(4,'Xe Đạp Điện',18000,2,0),(5,'Xe Đạp Đôi Điện',24000,3,0);
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -98,7 +99,7 @@ CREATE TABLE `station` (
 
 LOCK TABLES `station` WRITE;
 /*!40000 ALTER TABLE `station` DISABLE KEYS */;
-INSERT INTO `station` VALUES (1,'dora','/','số 1 trần duy hưng'),(2,'nobi','/','số 1 trần đại nghĩa');
+INSERT INTO `station` VALUES (1,'dora','/','số 1 trần duy hưng'),(2,'nobi','/','số 1 trần đại nghĩa'),(3,'xeko','/','số 1 nguyễn trãi'),(4,'chaien','/','số 1 đại cồ việt');
 /*!40000 ALTER TABLE `station` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -168,4 +169,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-01-05 21:13:20
+-- Dump completed on 2022-01-06 11:02:39

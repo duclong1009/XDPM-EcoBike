@@ -1,16 +1,14 @@
 package entity.bike;
 
+import entity.db.CapstoneDB;
+import utils.Utils;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
-
-import entity.db.CapstoneDB;
-import entity.category.Category;
-import entity.station.Station;
-import utils.Utils;
 
 public class Bike {
 
@@ -21,16 +19,26 @@ public class Bike {
     protected int status;
     protected int category_id;
     protected int station_id;
+    protected String imagePath;
 
     public Bike() {}
 
-    public Bike(int id, String bike_name, float pin, int status, int category_id , int station_id) {
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+
+    public Bike(int id, String bikeName, float pin, int status, int category_id, int station_id, String imagePath) {
         this.id = id;
-        this.bikeName = bike_name;
+        this.bikeName = bikeName;
         this.pin = pin;
         this.status = status;
-        this.category_id =category_id;
+        this.category_id = category_id;
         this.station_id = station_id;
+        this.imagePath = imagePath;
     }
 
     public Bike getBikeById(int id) throws SQLException{
@@ -40,7 +48,7 @@ public class Bike {
         ResultSet res = stm.executeQuery(sql);
         if(res.next()) {
             System.out.println("Not null");
-            Bike b = new Bike(res.getInt("id"), res.getString("bike_name"), res.getFloat("pin"), res.getInt("Status"), res.getInt("category_id"), res.getInt("station_id"));
+            Bike b = new Bike(res.getInt("id"), res.getString("bike_name"), res.getFloat("pin"), res.getInt("Status"), res.getInt("category_id"), res.getInt("station_id"),res.getString("image_path"));
             return b;
         }
         return null;
@@ -53,18 +61,22 @@ public class Bike {
         ArrayList bikeList = new ArrayList();
         while(res.next()) {
             LOGGER.info("Exist bike query!!");
-            Bike b = new Bike(res.getInt("id"), res.getString("bike_name"), res.getFloat("pin"), res.getInt("Status"), res.getInt("category_id"), res.getInt("station_id"));
+            Bike b = new Bike(res.getInt("id"), res.getString("bike_name"), res.getFloat("pin"), res.getInt("Status"), res.getInt("category_id"), res.getInt("station_id"),res.getString("image_path"));
             bikeList.add(b);
         }
         return bikeList;
     }
-    @java.lang.Override
-    public java.lang.String toString() {
+
+    @Override
+    public String toString() {
         return "Bike{" +
-                ", id=" + id +
-                ", bike_name='" + bikeName + '\'' +
+                "id=" + id +
+                ", bikeName='" + bikeName + '\'' +
                 ", pin=" + pin +
                 ", status=" + status +
+                ", category_id=" + category_id +
+                ", station_id=" + station_id +
+                ", imagePath='" + imagePath + '\'' +
                 '}';
     }
 
@@ -123,7 +135,7 @@ public class Bike {
         ArrayList bikeList = new ArrayList();
         while(res.next()) {
             LOGGER.info("Exist bike query!!");
-            Bike b = new Bike(res.getInt("id"), res.getString("bike_name"), res.getFloat("pin"), res.getInt("Status"), res.getInt("category_id"), res.getInt("station_id"));
+            Bike b = new Bike(res.getInt("id"), res.getString("bike_name"), res.getFloat("pin"), res.getInt("Status"), res.getInt("category_id"), res.getInt("station_id"),res.getString("image_path"));
             bikeList.add(b);
             System.out.println("Len res " + bikeList.size());
         }

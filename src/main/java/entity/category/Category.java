@@ -88,6 +88,9 @@ public class Category {
                     Category c = new Category();
                     c.setId(res.getInt("id"));
                     c.setCostPerHour(res.getFloat("costs_per_hour"));
+                    c.setName(res.getString("name"));
+                    c.setnPedals(res.getInt("n_pendals"));
+                    c.setnSeats(res.getInt("n_seats"));
                     return c;
                 }
             }
