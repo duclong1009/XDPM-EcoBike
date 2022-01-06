@@ -38,16 +38,17 @@ public class Configs {
 	public static float PERCENT_VAT = 10;
 
 	// static resource
+	public static final String POPUP_PATH = "/views/popup.fxml";
 	public static final String STATION_SCREEN_PATH = "/views/Station-Screen.fxml";
 	public static final String BIKE_STATION_PATH = "/views/Bike-Station-Screen.fxml";
-	public static final String IMAGE_PATH = "/assets/image";
+	public static final String IMAGE_PATH = "src/main/resources/assets/image";
 	public static final String BAR_CODE_SCREEN = "/views/Barcode-Form.fxml";
 	public static final String BIKE_DETAILS_SCREEN_PATH = "/views/Bike-Details-Screen.fxml";
 	public static final String DEPOSIT_FORM_PATH = "/views/Deposit-Form.fxml";
 	public static final String ERROR_NOTIFICATION_PATH = "/views/Error-Notification.fxml";
 	public static final String HOME_PATH  = "/views/Home-Screen.fxml";
 	public static final String PAYMENT_SCREEN_PATH = "/views/Payment-Screen.fxml";
-	public static final String RENTAL_BIKE_SCREEN_PATH = "/views/Rental-Bike-Screen.fxml";
+	public static final String RENTAL_BIKE_SCREEN_PATH = "/views/ViewRentingBike.fxml";
 	public static final String RESULT_SCREEN_PATH = "/views/Result-Screen.fxml";
 	public static final String SPLASH_SCREEN_PATH = "/views/Splash-Screen.fxml";
 	public static final String STATION_DETAILS_SCREEN_PATH = "/views/Station-Details-Screen.fxml";

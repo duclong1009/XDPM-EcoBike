@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/15" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox prefHeight="144.0" prefWidth="200.0">
+         <children>
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ImageView fx:id="logo" fitHeight="150.0" fitWidth="200.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </Pane>
+         </children>
+      </HBox>
+      <Label layoutX="236.0" layoutY="55.0" prefHeight="56.0" prefWidth="217.0" text="Renting Bike" textFill="#1e3ac9">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Label>
+      <HBox layoutX="136.0" layoutY="208.0" prefHeight="469.0" prefWidth="1072.0" style="-fx-border-color: #1e3ac9;">
+         <children>
+            <Pane prefHeight="467.0" prefWidth="1116.0">
+               <children>
+                  <Label layoutX="104.0" layoutY="84.0" prefHeight="27.0" prefWidth="74.0" text="Name">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="104.0" layoutY="175.0" prefHeight="27.0" prefWidth="74.0" text="Station">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="676.0" layoutY="267.0" prefHeight="27.0" prefWidth="74.0" text="Total fee">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="676.0" layoutY="175.0" prefHeight="27.0" prefWidth="74.0" text="Time">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="676.0" layoutY="98.0" prefHeight="27.0" prefWidth="121.0" text="Deposit Fee">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="104.0" layoutY="267.0" prefHeight="27.0" prefWidth="74.0" text="Status">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Text fx:id="name" layoutX="212.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="340.13671875">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="station" layoutX="212.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="340.13671875">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="status" layoutX="205.0" layoutY="287.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="340.13671875">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="depositFee" layoutX="809.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="260.13671875">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="time" layoutX="809.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="260.13671875">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="totalFee" layoutX="809.0" layoutY="287.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="260.13671875">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Button fx:id="copyBarcode" layoutX="321.0" layoutY="383.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="144.0" text="Copy barcode" />
+                  <Button fx:id="pause" layoutX="616.0" layoutY="383.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="121.0" text="Pause" />
+               </children>
+            </Pane>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

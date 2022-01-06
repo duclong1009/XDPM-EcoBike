@@ -9,12 +9,12 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/15" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox fx:id="hBox" layoutX="7.0" layoutY="216.0" prefHeight="552.0" prefWidth="1366.0">
          <children>
-            <VBox prefHeight="552.0" prefWidth="780.0" />
-            <VBox prefHeight="552.0" prefWidth="780.0" />
+            <VBox prefHeight="552.0" prefWidth="780.0" style="-fx-border-color: #33adff;" />
+            <VBox prefHeight="552.0" prefWidth="780.0" style="-fx-border-color: #33adff;" />
          </children></HBox>
       <HBox layoutX="7.0" layoutY="14.0" prefHeight="122.0" prefWidth="200.0">
          <children>
@@ -25,7 +25,7 @@
             </Pane>
          </children>
       </HBox>
-      <HBox layoutX="207.0" layoutY="14.0" prefHeight="122.0" prefWidth="806.0">
+      <HBox layoutX="207.0" layoutY="14.0" prefHeight="122.0" prefWidth="806.0" style="-fx-border-color: #33adff;">
          <children>
             <Pane prefHeight="122.0" prefWidth="583.0">
                <children>

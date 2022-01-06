@@ -13,7 +13,6 @@ import screen.home.HomeScreenHandler;
 import java.sql.*;
 
 import java.io.IOException;
-
 public class App extends Application {
 
 	@FXML

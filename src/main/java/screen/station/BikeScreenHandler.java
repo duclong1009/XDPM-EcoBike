@@ -46,18 +46,19 @@ public class BikeScreenHandler extends FXMLScreenHandler {
         viewDetails.setOnMouseClicked(e-> {
             try {
                 LOGGER.info("User clicked view bike details");
-                BikeDetailsScreen bikeDetailsScreen = new BikeDetailsScreen(stage, Configs.BIKE_DETAILS_SCREEN_PATH);
+                BikeDetailsScreen bikeDetailsScreen = new BikeDetailsScreen(stage, Configs.BIKE_DETAILS_SCREEN_PATH,bike);
                 bikeDetailsScreen.requestViewBikeDetail();
             } catch (IOException | SQLException ex) {
                 ex.printStackTrace();
             }
         });
         copyBarcode.setOnMouseClicked(e -> {
-            LOGGER.info("User clicked copy barcode");
-            String myString = bike.getBikeName();
-            StringSelection stringSelection = new StringSelection(myString);
-            Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-            clipboard.setContents(stringSelection, null);
+            try {
+                LOGGER.info("User clicked copy barcode");
+                Utils.copyToClipBoard(String.valueOf(bike.getId()));
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
         });
         setBikeInfo();
     }
