@@ -57,7 +57,7 @@ public class Category {
         this.name = name;
     }
 
-    
+
     public Category getCategoryById(int id)  throws SQLException{
             String sql = "SELECT * FROM category " + "where id=" + id + ";";
             Statement stm = CapstoneDB.getConnection().createStatement();
