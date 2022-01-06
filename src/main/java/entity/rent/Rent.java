@@ -10,8 +10,8 @@ public class Rent {
     private static Timestamp endTime;
     private static Timestamp startTime;
     private static Bike bike;
+    private static int depositFee;
 //    private static User user;
-    public static int testV;
     public static Timestamp getEndTime() {
         return endTime;
     }
@@ -36,6 +36,13 @@ public class Rent {
         Rent.bike = bike;
     }
 
+    public static int getDepositFee() {
+        return depositFee;
+    }
+
+    public static void setDepositFee(int depositFee) {
+        Rent.depositFee = depositFee;
+    }
 //    public static User getUser() {
 //        return user;
 //    }
