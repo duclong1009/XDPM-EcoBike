@@ -1,7 +1,12 @@
 package entity.category;
 
-import java.util.List;
 import entity.bike.Bike;
+import entity.db.CapstoneDB;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.List;
 
 public class Category {
 
@@ -75,5 +80,17 @@ public class Category {
 
         return bike;
     }
-
+    public Category getCategoryById(int id)  throws SQLException{
+            String sql = "SELECT * FROM category " + "where id=" + id + ";";
+            Statement stm = CapstoneDB.getConnection().createStatement();
+            try (ResultSet res = stm.executeQuery(sql)) {
+                if (res.next()) {
+                    Category c = new Category();
+                    c.setId(res.getInt("id"));
+                    c.setCostPerHour(res.getFloat("costs_per_hour"));
+                    return c;
+                }
+            }
+            return null;
+    }
 }
