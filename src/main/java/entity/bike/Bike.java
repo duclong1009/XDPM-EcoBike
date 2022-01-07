@@ -159,11 +159,11 @@ public class Bike {
         }
     }
 
-    public void updateStationIdById(int id, int sttId) throws SQLException{
+    public void updateStationIdById(int id, int newStationId) throws SQLException{
         try {
             String query = "update bike set station_id = ? where id = ?";
             PreparedStatement preparedStmt = CapstoneDB.getConnection().prepareStatement(query);
-            preparedStmt.setInt(1, sttId);
+            preparedStmt.setInt(1, newStationId);
             preparedStmt.setInt(2, id);
             preparedStmt.executeUpdate();
         }
