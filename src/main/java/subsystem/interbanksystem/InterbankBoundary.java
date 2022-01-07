@@ -1,4 +1,4 @@
-package interbanksystem;
+package subsystem.interbanksystem;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -26,7 +26,6 @@ public class InterbankBoundary {
             throw new RuntimeException("Failed with HTTP error code : " + statusCode);
         }
         HttpEntity httpEntity = httpResponse.getEntity();
-
         return new JSONObject(EntityUtils.toString(httpEntity));
     }
 }

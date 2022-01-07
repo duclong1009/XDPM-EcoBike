@@ -8,6 +8,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import screen.FXMLScreenHandler;
 import screen.bike.BikeDetailsScreen;
+import utils.API;
 import utils.Configs;
 import utils.Utils;
 
@@ -55,7 +56,8 @@ public class BikeScreenHandler extends FXMLScreenHandler {
         copyBarcode.setOnMouseClicked(e -> {
             try {
                 LOGGER.info("User clicked copy barcode");
-                Utils.copyToClipBoard(String.valueOf(bike.getId()));
+                String barC = API.convertIdToBarcode(bike.getId());
+                Utils.copyToClipBoard(barC);
             } catch (IOException ex) {
                 ex.printStackTrace();
             }

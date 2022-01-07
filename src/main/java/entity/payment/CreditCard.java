@@ -5,7 +5,7 @@ public class CreditCard {
     private String owner = "Group 5";
     private String cvvCode = "648";
     private String dateExpired = "1125";
-
+    public CreditCard() {}
     public CreditCard(String cardCode, String owner, String cvvCode, String dateExpired) {
         this.cardCode = cardCode;
         this.owner = owner;

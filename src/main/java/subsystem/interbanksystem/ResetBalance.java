@@ -1,4 +1,4 @@
-package interbanksystem;
+package subsystem.interbanksystem;
 
 import entity.payment.CreditCard;
 import entity.payment.PaymentTransaction;

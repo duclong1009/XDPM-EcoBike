@@ -1,5 +1,8 @@
 package screen.payment;
 
+import controller.PaymentController;
+import controller.RentBikeController;
+import entity.bike.Bike;
 import entity.rent.Rent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -8,10 +11,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import screen.BaseScreenHandler;
-import screen.ViewRentingBike.ViewRentBikeHandler;
 import screen.home.HomeScreenHandler;
+import screen.popup.PopupScreen;
 import utils.Configs;
 import utils.Utils;
+import utils.calculatefee.CalFee1;
 
 import java.io.File;
 import java.io.IOException;
@@ -39,7 +43,7 @@ public class PaymentScreen extends BaseScreenHandler {
 
     public static Logger LOGGER = Utils.getLogger(PaymentScreen.class.getName());
 
-    public  PaymentScreen (Stage stage, String path) throws IOException {
+    public  PaymentScreen (Stage stage, String path) throws IOException, SQLException {
         super(stage,path);
         setImage();
         setInfo();
@@ -50,9 +54,27 @@ public class PaymentScreen extends BaseScreenHandler {
         });
 
         returnButton.setOnMouseClicked(e-> {
+            int rF = new RentBikeController(new CalFee1()).calRentalFee();
             LOGGER.info("User clicked to return");
-
+            try {
+                PaymentController paymentController = new PaymentController();
+                if(paymentController.refund(Rent.getDepositFee() - rF,"Refund",Rent.getCard())) {
+                    PopupScreen.success("Payment Successfully");
+                    Bike bike = Rent.getBike();
+                    bike.setStation(Rent.getStation_id());
+                    // save bike;
+                    Rent.reset();
+                }
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
             // ******* Code return bike and save to transaction db **********
+            Rent.reset();
+            try {
+                PopupScreen.success("Return Bike Successfully");
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
         });
 
 
@@ -63,15 +85,18 @@ public class PaymentScreen extends BaseScreenHandler {
         Image img1 = new Image(file1.toURI().toString());
         logo.setImage(img1);
     }
-    public void setInfo() {
+    public void setInfo() throws SQLException {
+        int rF = new RentBikeController(new CalFee1()).calRentalFee();
+        rentalFee.setText(rF+ " VND");
         bikeName.setText(Rent.getBike().getBikeName());
+        depositFee.setText(Rent.getDepositFee() + "VND");
+        time.setText(Rent.thoigiandathue() + " phút");
+        refund.setText(Rent.getDepositFee() - rF + " VND");
     }
     public void requestPayment() throws IOException, SQLException {
 //        setPreviousScreen();
         setScreenTitle("Payment");
         setHomeScreenHandler(new HomeScreenHandler(this.stage, Configs.HOME_PATH));
-        depositFee.setText(String.valueOf(Rent.getDepositFee()));
-        time.setText(String.valueOf(Rent.thoigiandathue()));
         // *** code set text rent fee, refund //
         show();
     }

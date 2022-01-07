@@ -1,4 +1,4 @@
-package interbanksystem;
+package subsystem.interbanksystem;
 
 import entity.payment.CreditCard;
 import entity.payment.PaymentTransaction;
@@ -12,7 +12,7 @@ public class TestAPI {
         InterbankInterface interbank = new InterbankSubsystem();
         CreditCard creditCard = new CreditCard("kstn_group5_2021", "Group 5", "648", "1125");
 
-        PaymentTransaction paymentTransaction = interbank.refund(creditCard, 100000, "hoan tien 100k");
+        PaymentTransaction paymentTransaction = interbank.refund(creditCard, 1000000, "hoan tien 100k");
         System.out.println(paymentTransaction);
         System.out.println("Refund OK");
 

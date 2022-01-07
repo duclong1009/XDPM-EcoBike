@@ -43,10 +43,10 @@ public class Utils {
 	 * @author hieudm
 	 * @return the current time as {@link String String}.
 	 */
-	public static String getToday() {
+	public static Date getToday() {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	    Date date = new Date();
-	    return dateFormat.format(date);
+	    return date;
 	}
 
 	/**
