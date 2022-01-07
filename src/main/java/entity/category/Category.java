@@ -1,12 +1,10 @@
 package entity.category;
 
-import entity.bike.Bike;
 import entity.db.CapstoneDB;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.List;
 
 public class Category {
 
@@ -67,6 +65,9 @@ public class Category {
                     Category c = new Category();
                     c.setId(res.getInt("id"));
                     c.setCostPerHour(res.getFloat("costs_per_hour"));
+                    c.setName(res.getString("name"));
+                    c.setnPedals(res.getInt("n_pendals"));
+                    c.setnSeats(res.getInt("n_seats"));
                     return c;
                 }
             }

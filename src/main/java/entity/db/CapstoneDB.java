@@ -1,13 +1,11 @@
 
 package entity.db;
 
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.logging.Logger;
+import utils.Utils;
 
 import java.sql.Connection;
-import utils.*;
+import java.sql.DriverManager;
+import java.util.logging.Logger;
 
 public class CapstoneDB {
     private static Logger LOGGER = Utils.getLogger(Connection.class.getName());
