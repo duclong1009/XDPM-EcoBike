@@ -61,6 +61,7 @@ public class API {
 	 * @return
 	 * @throws IOException
 	 */
+
 	public static String post(String url, String data
 //			, String token
 	) throws IOException {
@@ -113,5 +114,19 @@ public class API {
 		}
 	}
 
+	public static String convertIdToBarcode(int id) {
+		return String.valueOf(100 * id);
+	}
+
+	public static int convertBarcodeToId(String barcode) {
+		try {
+			int id = Integer.parseInt(barcode)/100;
+			return id;
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
 
 }

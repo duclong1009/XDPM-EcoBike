@@ -13,6 +13,7 @@ import screen.home.HomeScreenHandler;
 import screen.payment.PaymentScreen;
 import screen.popup.PopupScreen;
 import screen.station.ViewStationDetailsHandler;
+import utils.API;
 import utils.Configs;
 import utils.Utils;
 
@@ -47,13 +48,15 @@ public class BarcodeHandler extends BaseScreenHandler {
         });
         submit.setOnMouseClicked(e -> {
             try {
-                String bc = barcode.getText();
+                String bc =  barcode.getText();
+                int id = API.convertBarcodeToId(bc);
+
                 if(bc.equals("")) {
                     PopupScreen.error("Vui lòng nhập barcode");
                 }
                 else {
                     if(Rent.getBike() != null ) {
-                        if(bc.equals(String.valueOf(Rent.getBike().getId()))) {
+                        if(id == Rent.getBike().getId()) {
                             PaymentScreen paymentScreen = new PaymentScreen(stage, Configs.PAYMENT_SCREEN_PATH);
                             paymentScreen.requestPayment();
                         }
@@ -62,9 +65,15 @@ public class BarcodeHandler extends BaseScreenHandler {
                         }
                     }
                     else {
-                        LOGGER.info("Deposit Screen");
-                        DepositScreenHandler depositScreenHandler = new DepositScreenHandler(stage, Configs.DEPOSIT_FORM_PATH, bc);
-                        depositScreenHandler.requestToDeposit(this);
+                        try {
+                            LOGGER.info("Deposit Screen");
+                            DepositScreenHandler depositScreenHandler = new DepositScreenHandler(stage, Configs.DEPOSIT_FORM_PATH, id);
+                            depositScreenHandler.requestToDeposit(this);
+                        }
+                        catch (Exception ex) {
+
+                            PopupScreen.error("Barcode không đúng");
+                        }
                     }
                 }
             } catch (IOException ex) {

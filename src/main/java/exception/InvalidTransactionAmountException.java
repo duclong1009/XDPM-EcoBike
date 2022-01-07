@@ -1,4 +1,4 @@
-package checkout.exception;
+package exception;
 
 public class InvalidTransactionAmountException extends PaymentException {
 

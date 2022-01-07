@@ -1,4 +1,4 @@
-package checkout.exception;
+package exception;
 
 public class SuspiciousTransactionException extends PaymentException {
     public SuspiciousTransactionException() {

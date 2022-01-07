@@ -16,9 +16,9 @@ public class CapstoneDB {
     public static Connection getConnection() {
         if (connection != null) return connection;
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ecodb", "root", "123456");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ecodb", "root", "251120");
             LOGGER.info("Connect database successfully");
-        } catch (Exception e) {
+        } catch (SQLException e) {
             LOGGER.info(e.getMessage());
         }
         return connection;

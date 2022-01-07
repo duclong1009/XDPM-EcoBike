@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import screen.BaseScreenHandler;
 import screen.home.HomeScreenHandler;
 import screen.station.BikeScreenHandler;
+import utils.API;
 import utils.Configs;
 import utils.Utils;
 
@@ -58,8 +59,8 @@ public class BikeDetailsScreen extends BaseScreenHandler {
         });
         copyBarcode.setOnMouseClicked(e -> {
             try {
-                int barC = bike.getId();
-                Utils.copyToClipBoard(String.valueOf(barC));
+                String barC = API.convertIdToBarcode(bike.getId());
+                Utils.copyToClipBoard(barC);
             } catch (IOException ex) {
                 ex.printStackTrace();
             }

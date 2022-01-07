@@ -1,7 +1,8 @@
 package utils.calculatefee;
 
-public class  BaseCalculateFee {
-    public static float calculate() {
+public abstract class  BaseCalculateFee {
+    public int calculate() {
         return 0;
     }
+
 }
