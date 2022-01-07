@@ -39,6 +39,8 @@ public class BikeDetailsScreen extends BaseScreenHandler {
     private Text usableTime;
     @FXML
     private Button copyBarcode;
+    @FXML
+    private ImageView bikeImage;
     public static Logger LOGGER = Utils.getLogger(BikeDetailsScreen.class.getName());
     private HomeScreenHandler home;
     public BikeDetailsScreen(Stage stage, String screenPath, Bike bike) throws IOException, SQLException {
@@ -74,6 +76,9 @@ public class BikeDetailsScreen extends BaseScreenHandler {
         depositFee.setText(String.valueOf(new DepositController().calDepositFee(b.getCategory())) + " VND");
         description.setText(String.valueOf(b.getStatus()));
         setImage();
+        File file2 = new File(Configs.IMAGE_PATH + "/" +b.getImagePath());
+        javafx.scene.image.Image img2 = new Image(file2.toURI().toString());
+        bikeImage.setImage(img2);
     }
 
     public void requestViewBikeDetail() throws IOException, SQLException {
@@ -86,6 +91,7 @@ public class BikeDetailsScreen extends BaseScreenHandler {
         File file1 = new File(Configs.IMAGE_PATH + "/eco.png");
         javafx.scene.image.Image img1 = new Image(file1.toURI().toString());
         logo.setImage(img1);
+
 
 
     }

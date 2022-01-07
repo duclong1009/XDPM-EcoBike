@@ -3,6 +3,7 @@ package entity.bike;
 import entity.db.CapstoneDB;
 import utils.Utils;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -140,6 +141,35 @@ public class Bike {
             System.out.println("Len res " + bikeList.size());
         }
         return bikeList;
+    }
+    public void updateStatusById(int id) throws SQLException{
+        try {
+            String query = "update bike set status = ? where id = ?";
+            Bike b = new Bike();
+            Bike b1 = b.getBikeById(id);
+            int stt = 1 - b1.getStatus();
+            PreparedStatement preparedStmt = CapstoneDB.getConnection().prepareStatement(query);
+            preparedStmt.setInt(1, stt);
+            preparedStmt.setInt(2, id);
+            preparedStmt.executeUpdate();
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void updateStationIdById(int id, int sttId) throws SQLException{
+        try {
+            String query = "update bike set station_id = ? where id = ?";
+            PreparedStatement preparedStmt = CapstoneDB.getConnection().prepareStatement(query);
+            preparedStmt.setInt(1, sttId);
+            preparedStmt.setInt(2, id);
+            preparedStmt.executeUpdate();
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+
     }
 
 

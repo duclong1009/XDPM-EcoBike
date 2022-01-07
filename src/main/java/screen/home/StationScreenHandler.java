@@ -50,7 +50,7 @@ public class StationScreenHandler extends FXMLScreenHandler {
         returnBikeHere.setOnMouseClicked(e -> {
             if (Rent.getBike() == null) {
                 try {
-                    Rent.setStation_id(station.getId());
+
                     PopupScreen.error("Ban chua thue xe");
                 } catch (IOException ex) {
                     ex.printStackTrace();
@@ -58,6 +58,8 @@ public class StationScreenHandler extends FXMLScreenHandler {
             }
             else {
                 try {
+                    Rent.setStation_id(station.getId());
+                    System.out.println(station.getId());
                     LOGGER.info(("User clicked to Rent Bike"));
                     BarcodeHandler barcodeHandler;
                     barcodeHandler = new BarcodeHandler(homeStage,Configs.BAR_CODE_SCREEN);

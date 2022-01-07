@@ -10,7 +10,7 @@ import java.text.ParseException;
 public class TestAPI {
     public static void main(String[] args) throws IOException, JSONException, ParseException {
         InterbankInterface interbank = new InterbankSubsystem();
-        CreditCard creditCard = new CreditCard("kstn_group5_2021", "Group 5", "648", "1125");
+            CreditCard creditCard = new CreditCard("kstn_group5_2021", "Group 5", "648", "1125");
 
         PaymentTransaction paymentTransaction = interbank.refund(creditCard, 1000000, "hoan tien 100k");
         System.out.println(paymentTransaction);
