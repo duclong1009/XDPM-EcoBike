@@ -2,7 +2,7 @@
 package entity.db;
 
 import utils.Utils;
-
+import java.sql.SQLException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.logging.Logger;

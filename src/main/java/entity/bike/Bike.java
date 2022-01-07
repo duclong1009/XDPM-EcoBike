@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
+import java.sql.PreparedStatement;
 
 public class Bike {
 
@@ -142,12 +143,38 @@ public class Bike {
         return bikeList;
     }
 
+    public void updateStatusById(int id) throws SQLException{
+        try {
+            String query = "update bike set status = ? where id = ?";
+            Bike b = new Bike();
+            Bike b1 = b.getBikeById(id);
+            int stt = 1 - b1.getStatus();
+            PreparedStatement preparedStmt = CapstoneDB.getConnection().prepareStatement(query);
+            preparedStmt.setInt(1, stt);
+            preparedStmt.setInt(2, id);
+            preparedStmt.executeUpdate();
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void updateStationIdById(int id, int sttId) throws SQLException{
+        try {
+            String query = "update bike set station_id = ? where id = ?";
+            PreparedStatement preparedStmt = CapstoneDB.getConnection().prepareStatement(query);
+            preparedStmt.setInt(1, sttId);
+            preparedStmt.setInt(2, id);
+            preparedStmt.executeUpdate();
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+
+    }
+
 
     public static void main(String[] args) throws SQLException {
         Bike bike = new Bike();
-//        bike = bike.getBikeById(1);
-//        List list = bike.findNameBike("Xe Đạp");
-//        Bike bk = (Bike) list.get(0);
-//        System.out.println(bk.getBikeName());
     }
 }
