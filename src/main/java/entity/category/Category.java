@@ -71,6 +71,9 @@ public class Category {
                     return c;
                 }
             }
+            catch(SQLException e){
+                e.printStackTrace();
+            }
             return null;
     }
 }
