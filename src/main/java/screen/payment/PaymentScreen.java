@@ -52,7 +52,7 @@ public class PaymentScreen extends BaseScreenHandler {
         returnButton.setOnMouseClicked(e-> {
             LOGGER.info("User clicked to return");
 
-            // ******* Code return bike **********
+            // ******* Code return bike and save to transaction db **********
         });
 
 
@@ -70,6 +70,9 @@ public class PaymentScreen extends BaseScreenHandler {
 //        setPreviousScreen();
         setScreenTitle("Payment");
         setHomeScreenHandler(new HomeScreenHandler(this.stage, Configs.HOME_PATH));
+        depositFee.setText(String.valueOf(Rent.getDepositFee()));
+        time.setText(String.valueOf(Rent.thoigiandathue()));
+        // *** code set text rent fee, refund //
         show();
     }
 }

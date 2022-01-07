@@ -1,6 +1,7 @@
 package screen.bike;
 
 import controller.BaseController;
+import controller.DepositController;
 import entity.bike.Bike;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -69,6 +70,7 @@ public class BikeDetailsScreen extends BaseScreenHandler {
         bikeName.setText((b.getBikeName()));
 //        File file2 = new File(Configs.IMAGE_PATH + "/" + b.getStatus())
 //        bikeImage.setImage();
+        depositFee.setText(String.valueOf(new DepositController().calDepositFee(b.getCategory())) + " VND");
         description.setText(String.valueOf(b.getStatus()));
         setImage();
     }

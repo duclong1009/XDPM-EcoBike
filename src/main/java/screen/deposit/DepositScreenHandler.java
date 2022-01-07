@@ -1,5 +1,6 @@
 package screen.deposit;
 
+import controller.DepositController;
 import controller.HomeController;
 import controller.PaymentController;
 import entity.bike.Bike;
@@ -49,6 +50,7 @@ public class DepositScreenHandler extends BaseScreenHandler {
 
     private HomeScreenHandler home;
     private Logger LOGGER = Utils.getLogger(DepositScreenHandler.class.getName());
+
     public DepositScreenHandler(Stage stage, String screenPath,String barC) throws IOException, SQLException {
         super(stage, screenPath);
         setImage();
@@ -70,30 +72,46 @@ public class DepositScreenHandler extends BaseScreenHandler {
             }
 
         });
+        DepositController depositController = new DepositController();
+        int depositFees = depositController.calDepositFee(bike.getCategory());
+        depositFee.setText(String.valueOf(depositFees) + " VND");
         submit.setOnMouseClicked(e-> {
-//            int depositBikeFee = Integer.parseInt(depositFee.getText());
-            int depositBikeFee = 10;
-            CreditCard card = new CreditCard(cardNumber.getText(),cardholderName.getText(),Integer.parseInt(securityCode.getText()), expirationDate.getText());
-            if( new PaymentController().checkAvailabelPay(card,depositBikeFee)) {
-                try {
-                    PopupScreen.success("Payment Successfully");
-                    Rent.setBike(bike);
-                    Rent.testV = 1;
-//                    Rent.setStartTime();
-                } catch (IOException ex) {
-                    ex.printStackTrace();
+//        int depositBikeFee = Integer.parseInt(depositFee.getText());
+            if(depositController.validateCardInfo(cardholderName.getText(),cardNumber.getText(),issuingBank.getText())){
+                CreditCard card = new CreditCard(cardNumber.getText(),cardholderName.getText(),Integer.parseInt(securityCode.getText()), expirationDate.getText());
+                if( new PaymentController().checkAvailabelPay(card,depositFees)) {
+                    try {
+                        Rent.setDepositFee(depositFees);
+                        PopupScreen.success("Payment Successfully");
+                        Rent.setBike(bike);
+                        Rent.setStartTime();
 
+//                    Rent.setStartTime();
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+
+                    }
+                }
+                else {
+                    try {
+                        PopupScreen.error("Error");
+
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
                 }
             }
             else {
                 try {
-                    PopupScreen.error("Error");
-
+                    PopupScreen.error("Thong tin the sai");
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
             }
         });
+
+
+
     }
 
     public void setImage() {

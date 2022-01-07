@@ -18,6 +18,7 @@ import utils.Utils;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -47,7 +48,7 @@ public class ViewRentBikeHandler extends BaseScreenHandler {
 
 
     public static Logger LOGGER = Utils.getLogger(ViewRentBikeHandler.class.getName());
-    public ViewRentBikeHandler(Stage stage, String screenPath) throws IOException {
+    public ViewRentBikeHandler(Stage stage, String screenPath) throws IOException, SQLException {
         super(stage, screenPath);
         setImage();
         setInfo();
@@ -56,6 +57,7 @@ public class ViewRentBikeHandler extends BaseScreenHandler {
             setScreenTitle("Home");
             homeScreenHandler.show();
         });
+
         copyBarcode.setOnMouseClicked(e-> {
             int id = Rent.getBike().getId();
             String barC = String.valueOf(id);
@@ -73,8 +75,12 @@ public class ViewRentBikeHandler extends BaseScreenHandler {
         Image img1 = new Image(file1.toURI().toString());
         logo.setImage(img1);
     }
-    public void setInfo() {
+    public void setInfo() throws SQLException {
+        depositFee.setText(String.valueOf(Rent.getDepositFee()));
         name.setText(Rent.getBike().getBikeName());
+        time.setText(String.valueOf(Rent.thoigiandathue()));
+
+
     }
     public void requestToViewRentBike(BaseScreenHandler prevScreen) {
         setPreviousScreen(prevScreen);
