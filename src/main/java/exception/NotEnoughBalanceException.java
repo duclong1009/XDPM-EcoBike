@@ -1,4 +1,4 @@
-package checkout.exception;
+package exception;
 
 public class NotEnoughBalanceException extends PaymentException {
     public NotEnoughBalanceException() {

@@ -1,7 +1,9 @@
-package checkout;
+package subsystem.interbanksystem;
 
-import checkout.exception.PaymentException;
-import checkout.exception.UnrecognizedException;
+import entity.payment.CreditCard;
+import entity.payment.PaymentTransaction;
+import exception.PaymentException;
+import exception.UnrecognizedException;
 import org.json.JSONException;
 
 import java.io.IOException;

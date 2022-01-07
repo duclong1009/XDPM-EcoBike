@@ -50,6 +50,7 @@ public class StationScreenHandler extends FXMLScreenHandler {
         returnBikeHere.setOnMouseClicked(e -> {
             if (Rent.getBike() == null) {
                 try {
+                    Rent.setStation_id(station.getId());
                     PopupScreen.error("Ban chua thue xe");
                 } catch (IOException ex) {
                     ex.printStackTrace();

@@ -1,6 +1,7 @@
-package checkout;
+package subsystem.interbanksystem;
 
-import checkout.interbanksystem.Config;
+import entity.payment.CreditCard;
+import entity.payment.PaymentTransaction;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpPatch;

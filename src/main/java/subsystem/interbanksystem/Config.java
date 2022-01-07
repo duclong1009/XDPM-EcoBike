@@ -1,4 +1,4 @@
-package checkout.interbanksystem;
+package subsystem.interbanksystem;
 
 public class Config {
     public static final String API_VERSION = "1.0.1";

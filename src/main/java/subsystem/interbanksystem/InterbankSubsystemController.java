@@ -1,8 +1,9 @@
-package checkout.interbanksystem;
+package subsystem.interbanksystem;
 
-import checkout.CreditCard;
-import checkout.PaymentTransaction;
-import checkout.exception.*;
+import entity.payment.CreditCard;
+import entity.payment.PaymentTransaction;
+//import checkout.exception.*;
+import exception.*;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -23,10 +24,14 @@ public class InterbankSubsystemController {
         requestTransaction.setCreateAt(new Date());
 
         String transactionRequest = getTransactionRequest(requestTransaction, "pay");
+        System.out.println(getTransactionRequest(requestTransaction, "pay"));
         JSONObject response = interbankBoundary.request(transactionRequest);
+        System.out.println(response);
+        System.out.println(makePaymentTransaction(response));
 
         return makePaymentTransaction(response);
     }
+
 
     public PaymentTransaction refund(CreditCard card, int amount, String contents) throws IOException, JSONException, ParseException {
         PaymentTransaction requestTransaction = new PaymentTransaction();
@@ -41,6 +46,10 @@ public class InterbankSubsystemController {
         return makePaymentTransaction(response);
     }
 
+    public static void main(String[] args) throws IOException, ParseException {
+        InterbankSubsystemController interbankSubsystemController = new InterbankSubsystemController();
+        interbankSubsystemController.payRental(new CreditCard(), 1000,"pay");
+    }
     /**
      * Make payment transaction
      * and throw exception base on error code
@@ -49,7 +58,7 @@ public class InterbankSubsystemController {
      * @throws PaymentException
      * @throws JSONException
      */
-    private PaymentTransaction makePaymentTransaction(JSONObject response) throws PaymentException, JSONException, ParseException {
+    private PaymentTransaction makePaymentTransaction(JSONObject response) throws PaymentException, JSONException, ParseException, IOException {
         if (response == null)
             return null;
         switch ((String) response.get("errorCode")) {
@@ -121,6 +130,7 @@ public class InterbankSubsystemController {
         JSONObject obj = new JSONObject();
         obj.put("secretKey", Config.SECRET_KEY);
         obj.put("transaction", jsonTransaction);
+//        System.out.println("OUt put getJsonToHashCode" + obj);
         return obj;
     }
 
@@ -142,6 +152,7 @@ public class InterbankSubsystemController {
         obj.put("transactionContent", paymentTransaction.getTransactionContent());
         obj.put("amount", paymentTransaction.getAmount());
         obj.put("createdAt", format(paymentTransaction.getCreateAt()));
+//        System.out.println("OUtput getJsonTransaction " + obj);
         return obj;
     }
 

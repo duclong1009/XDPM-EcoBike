@@ -1,5 +1,6 @@
 package screen.ViewRentingBike;
 
+import controller.RentBikeController;
 import entity.rent.Rent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -12,8 +13,10 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import screen.BaseScreenHandler;
+import utils.API;
 import utils.Configs;
 import utils.Utils;
+import utils.calculatefee.CalFee1;
 
 
 import java.io.File;
@@ -59,15 +62,14 @@ public class ViewRentBikeHandler extends BaseScreenHandler {
         });
 
         copyBarcode.setOnMouseClicked(e-> {
-            int id = Rent.getBike().getId();
-            String barC = String.valueOf(id);
             try {
+                int id = Rent.getBike().getId();
+                String barC = API.convertIdToBarcode(id);
                 Utils.copyToClipBoard(barC);
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
         });
-//        addBikeHome();
     }
 
     public void setImage() {
@@ -76,11 +78,10 @@ public class ViewRentBikeHandler extends BaseScreenHandler {
         logo.setImage(img1);
     }
     public void setInfo() throws SQLException {
-        depositFee.setText(String.valueOf(Rent.getDepositFee()));
+        depositFee.setText(String.valueOf(Rent.getDepositFee()) + " VND");
         name.setText(Rent.getBike().getBikeName());
         time.setText(String.valueOf(Rent.thoigiandathue()));
-
-
+        totalFee.setText(String.valueOf(new RentBikeController(new CalFee1()).calRentalFee()) +" VND");
     }
     public void requestToViewRentBike(BaseScreenHandler prevScreen) {
         setPreviousScreen(prevScreen);

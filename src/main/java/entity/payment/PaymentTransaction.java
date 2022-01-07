@@ -1,25 +1,51 @@
 package entity.payment;
 
+import java.util.Date;
+
 public class PaymentTransaction {
-	private String errorCode;
-	private CreditCard card;
-	private String transactionId;
-	private String transactionContent;
-	private int amount;
-	private String createdAt;
-	
-	public PaymentTransaction(String errorCode, CreditCard card, String transactionId, String transactionContent,
-			int amount, String createdAt) {
-		super();
-		this.errorCode = errorCode;
-		this.card = card;
-		this.transactionId = transactionId;
-		this.transactionContent = transactionContent;
-		this.amount = amount;
-		this.createdAt = createdAt;
-	}
-	
-	public String getErrorCode() {
-		return errorCode;
-	}
+    private int amount;
+    private CreditCard card;
+    private String transactionContent;
+    private Date createAt;
+
+    public PaymentTransaction(int amount, CreditCard card, String transactionContent, Date createAt) {
+        this.amount = amount;
+        this.card = card;
+        this.transactionContent = transactionContent;
+        this.createAt = createAt;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public String getTransactionContent() {
+        return transactionContent;
+    }
+
+    public Date getCreateAt() {
+        return createAt;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public void setTransactionContent(String transactionContent) {
+        this.transactionContent = transactionContent;
+    }
+
+    public void setCreateAt(Date createAt) {
+        this.createAt = createAt;
+    }
+
+    public PaymentTransaction(){};
+
+    public CreditCard getCard() {
+        return card;
+    }
+
+    public void setCard(CreditCard card) {
+        this.card = card;
+    }
 }

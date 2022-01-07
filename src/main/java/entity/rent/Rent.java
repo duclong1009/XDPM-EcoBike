@@ -1,6 +1,7 @@
 package entity.rent;
 
 import entity.bike.Bike;
+import entity.payment.CreditCard;
 import entity.user.User;
 
 import java.sql.SQLException;
@@ -11,7 +12,26 @@ public class Rent {
     private static Timestamp startTime;
     private static Bike bike;
     private static int depositFee;
-//    private static User user;
+    private static CreditCard card;
+    private static int station_id;
+
+    public static int getStation_id() {
+        return station_id;
+    }
+
+    public static void setStation_id(int station_id) {
+        Rent.station_id = station_id;
+    }
+
+    public static CreditCard getCard() {
+        return card;
+    }
+
+    public static void setCard(CreditCard card) {
+        Rent.card = card;
+    }
+
+    //    private static User user;
     public static Timestamp getEndTime() {
         return endTime;
     }
@@ -43,19 +63,19 @@ public class Rent {
     public static void setDepositFee(int depositFee) {
         Rent.depositFee = depositFee;
     }
-//    public static User getUser() {
-//        return user;
-//    }
-//
-//    public static void setUser(User user) {
-//        Rent.user = user;
-//    }
-
     public Rent() {
     }
 
     public static int thoigiandathue() throws SQLException {
         Timestamp endTime = new Timestamp(System.currentTimeMillis());
         return endTime.getMinutes() - Rent.startTime.getMinutes();
+    }
+
+    public static void reset() {
+        endTime = null;
+        startTime = null;
+        bike = null;
+        depositFee = 0;
+        card = null;
     }
 }
