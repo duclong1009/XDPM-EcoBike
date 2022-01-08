@@ -1,5 +1,6 @@
 package screen.barcode;
 
+import controller.BarcodeController;
 import entity.rent.Rent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -19,6 +20,7 @@ import utils.Utils;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.sql.SQLException;
 import java.util.logging.Logger;
 
@@ -32,7 +34,7 @@ public class BarcodeHandler extends BaseScreenHandler {
     @FXML
     private TextField barcode;
 
-    public BarcodeHandler(Stage stage, String screenPath) throws IOException {
+    public BarcodeHandler(Stage stage, String screenPath) throws IOException, URISyntaxException, NumberFormatException {
         super(stage, screenPath);
         setImage();
         logo.setOnMouseClicked(e -> {
@@ -46,10 +48,12 @@ public class BarcodeHandler extends BaseScreenHandler {
                 ex.printStackTrace();
             }
         });
+
+        BarcodeController barcodeController = new BarcodeController();
         submit.setOnMouseClicked(e -> {
             try {
                 String bc =  barcode.getText();
-                int id = API.convertBarcodeToId(bc);
+                int id = barcodeController.convertBarcodeToId(bc);
 
                 if(bc.equals("")) {
                     PopupScreen.error("Vui lòng nhập barcode");
@@ -78,7 +82,7 @@ public class BarcodeHandler extends BaseScreenHandler {
                 }
             } catch (IOException ex) {
                 ex.printStackTrace();
-            } catch (SQLException ex) {
+            } catch (SQLException | URISyntaxException ex) {
                 ex.printStackTrace();
             }
         });

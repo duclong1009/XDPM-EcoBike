@@ -13,7 +13,7 @@ public class BarcodeController extends BaseController{
         this.barcodeConnector = new OriginBarcode();
     }
 
-    public int getIdByBarcode(String barcode) throws IOException, URISyntaxException, NumberFormatException{
+    public int convertBarcodeToId(String barcode) throws IOException, URISyntaxException, NumberFormatException{
         String rawId = this.barcodeConnector.request(barcode);
         int id = Integer.parseInt(rawId);
         return id;
