@@ -173,37 +173,6 @@ public class Bike {
 
     }
 
-    public void updateStatusById(int id) throws SQLException{
-        try {
-            String query = "update bike set status = ? where id = ?";
-            Bike b = new Bike();
-            Bike b1 = b.getBikeById(id);
-            int stt = 1 - b1.getStatus();
-            PreparedStatement preparedStmt = CapstoneDB.getConnection().prepareStatement(query);
-            preparedStmt.setInt(1, stt);
-            preparedStmt.setInt(2, id);
-            preparedStmt.executeUpdate();
-        }
-        catch (SQLException e){
-            e.printStackTrace();
-        }
-    }
-
-    public void updateStationIdById(int id, int newStationId) throws SQLException{
-        try {
-            String query = "update bike set station_id = ? where id = ?";
-            PreparedStatement preparedStmt = CapstoneDB.getConnection().prepareStatement(query);
-            preparedStmt.setInt(1, newStationId);
-            preparedStmt.setInt(2, id);
-            preparedStmt.executeUpdate();
-        }
-        catch (SQLException e){
-            e.printStackTrace();
-        }
-
-    }
-
-
     public static void main(String[] args) throws SQLException {
         Bike bike = new Bike();
     }
