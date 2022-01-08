@@ -1,5 +1,6 @@
 package screen.ViewRentingBike;
 
+import controller.BarcodeController;
 import controller.RentBikeController;
 import entity.rent.Rent;
 import javafx.fxml.FXML;
@@ -63,8 +64,10 @@ public class ViewRentBikeHandler extends BaseScreenHandler {
 
         copyBarcode.setOnMouseClicked(e-> {
             try {
+                BarcodeController barcodeController = new BarcodeController()
+                        ;
                 int id = Rent.getBike().getId();
-                String barC = API.convertIdToBarcode(id);
+                String barC = barcodeController.convertIdToBarcode(id);
                 Utils.copyToClipBoard(barC);
             } catch (IOException ex) {
                 ex.printStackTrace();
@@ -81,7 +84,7 @@ public class ViewRentBikeHandler extends BaseScreenHandler {
         depositFee.setText(String.valueOf(Rent.getDepositFee()) + " VND");
         name.setText(Rent.getBike().getBikeName());
         time.setText(String.valueOf(Rent.thoigiandathue()));
-        totalFee.setText(String.valueOf(new RentBikeController(new CalFee1()).calRentalFee()) +" VND");
+        totalFee.setText(String.valueOf(new RentBikeController(new CalFee1()).calRentalFee(Rent.getBike().getCategory())) +" VND");
     }
     public void requestToViewRentBike(BaseScreenHandler prevScreen) {
         setPreviousScreen(prevScreen);

@@ -54,7 +54,7 @@ public class PaymentScreen extends BaseScreenHandler {
         });
 
         returnButton.setOnMouseClicked(e-> {
-            int rF = new RentBikeController(new CalFee1()).calRentalFee();
+            int rF = new RentBikeController(new CalFee1()).calRentalFee(Rent.getBike().getCategory());
             LOGGER.info("User clicked to return");
             try {
                 PaymentController paymentController = new PaymentController();
@@ -90,7 +90,7 @@ public class PaymentScreen extends BaseScreenHandler {
         logo.setImage(img1);
     }
     public void setInfo() throws SQLException {
-        int rF = new RentBikeController(new CalFee1()).calRentalFee();
+        int rF = new RentBikeController(new CalFee1()).calRentalFee(Rent.getBike().getCategory());
         rentalFee.setText(rF+ " VND");
         bikeName.setText(Rent.getBike().getBikeName());
         depositFee.setText(Rent.getDepositFee() + "VND");

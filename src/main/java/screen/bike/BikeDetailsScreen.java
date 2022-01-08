@@ -1,8 +1,11 @@
 package screen.bike;
 
+import controller.BarcodeController;
 import controller.BaseController;
 import controller.DepositController;
 import entity.bike.Bike;
+import entity.bike.ElectricBike;
+import entity.category.Category;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -61,7 +64,8 @@ public class BikeDetailsScreen extends BaseScreenHandler {
         });
         copyBarcode.setOnMouseClicked(e -> {
             try {
-                String barC = API.convertIdToBarcode(bike.getId());
+                BarcodeController barcodeController = new BarcodeController();
+                String barC = barcodeController.convertIdToBarcode(bike.getId());
                 Utils.copyToClipBoard(barC);
             } catch (IOException ex) {
                 ex.printStackTrace();
@@ -69,12 +73,21 @@ public class BikeDetailsScreen extends BaseScreenHandler {
         });
     }
 
-    public void setInfo(Bike b) {
+    public void setInfo(Bike b) throws SQLException {
         bikeName.setText((b.getBikeName()));
 //        File file2 = new File(Configs.IMAGE_PATH + "/" + b.getStatus())
 //        bikeImage.setImage();
         depositFee.setText(String.valueOf(new DepositController().calDepositFee(b.getCategory())) + " VND");
         description.setText(String.valueOf(b.getStatus()));
+        Category category = new Category();
+        int cate = b.getCategory();
+        if( cate == 4 || cate == 5 ) {
+            ElectricBike bi = (ElectricBike) (new ElectricBike()).getBikeById(b.getId());
+            usableTime.setText(bi.getPin() + "%");
+        }
+        else  {
+            usableTime.setText("--");
+        }
         setImage();
         File file2 = new File(Configs.IMAGE_PATH + "/" +b.getImagePath());
         javafx.scene.image.Image img2 = new Image(file2.toURI().toString());

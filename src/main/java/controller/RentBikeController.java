@@ -8,8 +8,7 @@ public class RentBikeController extends BaseController{
     public RentBikeController(BaseCalculateFee cal) {
         this.calFee = cal;
     }
-
-    public int calRentalFee() {
-        return this.calFee.calculate();
+    public int calRentalFee(int id) {
+        return this.calFee.calculate(id);
     }
 }

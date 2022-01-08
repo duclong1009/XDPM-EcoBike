@@ -96,6 +96,10 @@ public class DepositScreenHandler extends BaseScreenHandler {
     }
     public void setInfo(Bike bike) {
         bikeName.setText(bike.getBikeName());
+        File file1 = new File(Configs.IMAGE_PATH + "/" + bike.getImagePath());
+        Image img1 = new Image(file1.toURI().toString());
+        bikeImage.setImage(img1);
+//        bikeImage.setImage(Configs.IMAGE_PATH + "/" + bike.getImagePath());
 
     }
     public void requestToDeposit(BaseScreenHandler prev) {

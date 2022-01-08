@@ -1,5 +1,6 @@
 package screen.station;
 
+import controller.BarcodeController;
 import entity.bike.Bike;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -58,7 +59,8 @@ public class BikeScreenHandler extends FXMLScreenHandler {
         copyBarcode.setOnMouseClicked(e -> {
             try {
                 LOGGER.info("User clicked copy barcode");
-                String barC = API.convertIdToBarcode(bike.getId());
+                BarcodeController barcodeController = new BarcodeController();
+                String barC = barcodeController.convertIdToBarcode(bike.getId());
                 Utils.copyToClipBoard(barC);
             } catch (IOException ex) {
                 ex.printStackTrace();

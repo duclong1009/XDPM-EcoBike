@@ -114,9 +114,9 @@ public class API {
 		}
 	}
 
-	public static String convertIdToBarcode(int id) {
-		return String.valueOf(100 * id);
-	}
+//	public static String convertIdToBarcode(int id) {
+//		return String.valueOf(100 * id);
+//	}
 
 	public static int convertBarcodeToId(String barcode) {
 		try {

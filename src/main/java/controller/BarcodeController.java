@@ -18,4 +18,9 @@ public class BarcodeController extends BaseController{
         int id = Integer.parseInt(rawId);
         return id;
     }
+
+    public String convertIdToBarcode(int id) {
+        return String.valueOf(100 * id);
+    }
+
 }
