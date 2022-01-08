@@ -165,9 +165,5 @@ public class Bike {
 
     public static void main(String[] args) throws SQLException {
         Bike bike = new Bike();
-//        bike = bike.getBikeById(1);
-//        List list = bike.findNameBike("Xe Đạp");
-//        Bike bk = (Bike) list.get(0);
-//        System.out.println(bk.getBikeName());
     }
 }
