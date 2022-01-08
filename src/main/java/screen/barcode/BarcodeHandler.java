@@ -55,8 +55,8 @@ public class BarcodeHandler extends BaseScreenHandler {
                 String bc =  barcode.getText();
                 int id = barcodeController.convertBarcodeToId(bc);
 
-                if(bc.equals("")) {
-                    PopupScreen.error("Vui lòng nhập barcode");
+                if(!barcodeController.validateBarcode(bc)) {
+                    PopupScreen.error("Barcode is invalid");
                 }
                 else {
                     if(Rent.getBike() != null ) {

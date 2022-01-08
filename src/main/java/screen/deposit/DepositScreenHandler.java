@@ -75,7 +75,10 @@ public class DepositScreenHandler extends BaseScreenHandler {
         submit.setOnMouseClicked(e-> {
             PaymentController paymentController = new PaymentController();
             try {
-                if(paymentController.payRental(depositFees,"DAT COC 400k",securityCode.getText(),cardholderName.getText(),cardNumber.getText(),expirationDate.getText())) {
+                if (!depositController.validateName(cardholderName.getText()) || !depositController.validateCardNumber(cardNumber.getText()) || !depositController.validateExpirationDate(expirationDate.getText()) || !depositController.validateSecurityCode(securityCode.getText())) {
+                    PopupScreen.error("Card info is invalid!");
+                }
+                else if (paymentController.payRental(depositFees,"DAT COC 400k",securityCode.getText(),cardholderName.getText(),cardNumber.getText(),expirationDate.getText())) {
                     PopupScreen.success("Deposit Successfully");
                     Rent.setDepositFee(depositFees);
                     Rent.setBike(bike);
