@@ -9,8 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/15" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox prefHeight="144.0" prefWidth="200.0">
          <children>
@@ -30,68 +29,54 @@
          <children>
             <Pane prefHeight="467.0" prefWidth="1116.0">
                <children>
-                  <Label layoutX="104.0" layoutY="84.0" prefHeight="27.0" prefWidth="74.0" text="Name">
+                  <Label layoutX="104.0" layoutY="84.0" prefHeight="27.0" prefWidth="74.0" text="Name" textFill="#230dd0">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="104.0" layoutY="175.0" prefHeight="27.0" prefWidth="74.0" text="Station">
+                  <Label layoutX="93.0" layoutY="241.0" prefHeight="27.0" prefWidth="98.0" text="Total fee" textFill="#fc0c0c">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="676.0" layoutY="267.0" prefHeight="27.0" prefWidth="74.0" text="Total fee">
+                  <Label layoutX="683.0" layoutY="241.0" prefHeight="27.0" prefWidth="74.0" text="Time" textFill="#2c10e1">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="676.0" layoutY="175.0" prefHeight="27.0" prefWidth="74.0" text="Time">
+                  <Label layoutX="676.0" layoutY="98.0" prefHeight="27.0" prefWidth="121.0" text="Deposit Fee" textFill="#2c10e1">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="676.0" layoutY="98.0" prefHeight="27.0" prefWidth="121.0" text="Deposit Fee">
+                  <Text fx:id="name" fill="#230dd0" layoutX="212.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="340.13671875">
                      <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="104.0" layoutY="267.0" prefHeight="27.0" prefWidth="74.0" text="Status">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Text fx:id="name" layoutX="212.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="340.13671875">
-                     <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Text>
-                  <Text fx:id="station" layoutX="212.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="340.13671875">
+                  <Text fx:id="depositFee" fill="#2c10e1" layoutX="809.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="260.13671875">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Text>
-                  <Text fx:id="status" layoutX="205.0" layoutY="287.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="340.13671875">
+                  <Text fx:id="time" fill="#2c10e1" layoutX="809.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="260.13671875">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Text>
-                  <Text fx:id="depositFee" layoutX="809.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="260.13671875">
+                  <Text fx:id="totalFee" fill="#ee0f0f" layoutX="212.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="260.13671875">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Text>
-                  <Text fx:id="time" layoutX="809.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="260.13671875">
+                  <Button fx:id="copyBarcode" layoutX="321.0" layoutY="383.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="144.0" style="-fx-background-color: #ee0f0f;" text="Copy barcode" textFill="#fcf7f7">
                      <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Text>
-                  <Text fx:id="totalFee" layoutX="809.0" layoutY="287.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="260.13671875">
+                        <Font name="System Bold" size="18.0" />
+                     </font></Button>
+                  <Button fx:id="pause" layoutX="616.0" layoutY="389.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="121.0" style="-fx-background-color: #2c10e1;" text="Pause" textFill="#fcf9f9">
                      <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Text>
-                  <Button fx:id="copyBarcode" layoutX="321.0" layoutY="383.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="144.0" text="Copy barcode" />
-                  <Button fx:id="pause" layoutX="616.0" layoutY="383.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="121.0" text="Pause" />
+                        <Font name="System Bold" size="18.0" />
+                     </font></Button>
                </children>
             </Pane>
          </children>

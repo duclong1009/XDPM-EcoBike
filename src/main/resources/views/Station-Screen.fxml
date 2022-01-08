@@ -5,19 +5,25 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="180.0" prefWidth="680.0" style="-fx-border-color: #33adff;" xmlns="http://javafx.com/javafx/15" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="180.0" prefWidth="680.0" style="-fx-border-color: #33adff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="nameStation" layoutX="44.0" layoutY="35.0" prefHeight="29.0" prefWidth="113.0" text="Station">
+      <Label fx:id="nameStation" layoutX="44.0" layoutY="35.0" prefHeight="29.0" prefWidth="113.0" text="Station" textFill="#2209c6">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="address" layoutX="14.0" layoutY="103.0" text="1 Chua boc, Thai ha, Dong Da Ha noi">
+      <Label fx:id="address" layoutX="14.0" layoutY="103.0" text="1 Chua boc, Thai ha, Dong Da Ha noi" textFill="#1b04cd">
          <font>
-            <Font size="14.0" />
+            <Font name="System Bold Italic" size="14.0" />
          </font>
       </Label>
-      <Button fx:id="viewsDetails" layoutX="486.0" layoutY="37.0" mnemonicParsing="false" text="View details" />
-      <Button fx:id="returnBikeHere" layoutX="474.0" layoutY="101.0" mnemonicParsing="false" text="Return bike here" />
+      <Button fx:id="viewsDetails" layoutX="486.0" layoutY="37.0" mnemonicParsing="false" style="-fx-background-color: #2209c6;" text="View details" textFill="#e8dbdb">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Button>
+      <Button fx:id="returnBikeHere" layoutX="474.0" layoutY="101.0" mnemonicParsing="false" style="-fx-background-color: #d70f0f;" text="Return bike here" textFill="#e1e1e1">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Button>
    </children>
 </AnchorPane>
