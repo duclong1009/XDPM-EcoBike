@@ -1,6 +1,6 @@
 package screen.station;
 
-import controller.HomeController;
+import controller.BikeController;
 import entity.bike.Bike;
 import entity.station.Station;
 import javafx.fxml.FXML;
@@ -18,7 +18,6 @@ import screen.popup.PopupScreen;
 import utils.Configs;
 import utils.Utils;
 
-import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -60,6 +59,7 @@ public class ViewStationDetailsHandler extends BaseScreenHandler {
     public ViewStationDetailsHandler(Stage stage, String screenPath, Station station) throws IOException, SQLException {
 
         super(stage, screenPath);
+        BikeController bikeController = new BikeController();
         setImage();
         LOGGER.info("Opening ViewStationDetail");
         this.station = station;
@@ -70,18 +70,13 @@ public class ViewStationDetailsHandler extends BaseScreenHandler {
             setScreenTitle("Home");
             home.show();
         });
-        this.setBController(new HomeController());
-        HomeController controller = (HomeController) getBController();
-        List bikeList = controller.getAllBike(station.getId());
+        List bikeList = bikeController.getAllBike(station.getId());
         System.out.println(bikeList.size());
         List bikeHandler = new ArrayList<>();
         for(Object object : bikeList) {
             Bike bike = (Bike) object;
             bikeHandler.add(new BikeScreenHandler(stage,Configs.BIKE_STATION_PATH,bike));
         }
-//        for(int i = 0; i <6;i++) {
-//            medium.add(new BikeScreenHandler(stage,Configs.BIKE_STATION_PATH));
-//        }
         addBikeStation(bikeHandler);
         setStationInfo();
 
@@ -89,7 +84,7 @@ public class ViewStationDetailsHandler extends BaseScreenHandler {
             String searchStr = searchField.getText();
             try {
                 LOGGER.info("User clicked search");
-                List bikeListSearch = ((HomeController) getBController()).getSearchBike(searchStr, String.valueOf(station.getId()));
+                List bikeListSearch = bikeController.getSearchBike(searchStr, String.valueOf(station.getId()));
                 List bikeSearchHandler = new ArrayList<>();
                 if(bikeListSearch.size() ==0) {
                     PopupScreen.error("Khong co xe nao phu hop");

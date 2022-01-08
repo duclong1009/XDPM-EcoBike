@@ -10,10 +10,10 @@ import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
 import controller.BarcodeController;
-import controller.HomeController;
 //import controller.ViewCartController;
 //import entity.cart.Cart;
 //import entity.media.Media;
+import controller.StationController;
 import entity.rent.Rent;
 import entity.station.Station;
 import javafx.fxml.FXML;
@@ -67,9 +67,10 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 
     public HomeScreenHandler(Stage stage, String screenPath) throws IOException, SQLException {
         super(stage, screenPath);
+        StationController stationController =  new StationController();
         setImage();
         LOGGER.info("Open Home Screen");
-        List stationList = getBController().getAllStation();
+        List stationList = stationController.getAllStation();
         List stationHandler = new ArrayList<>();
         hBox.getChildren().forEach(node -> {
             VBox vBox = (VBox) node;
@@ -81,9 +82,10 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
         }
         addStationHome(stationHandler);
         searchMenu.setOnMouseClicked(e -> {
+
             try {
                 String searchStr = searchField.getText();
-                List stationListSearch = getBController().getSearchStation(searchStr);
+                List stationListSearch = stationController.getSearchStation(searchStr);
                 List stationHandlerSearch = new ArrayList<>();
                 if(stationListSearch.size() == 0) {
                     PopupScreen.error("Không có bãi xe phù hợp");
@@ -124,15 +126,9 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
         }
     }
 
-
-    public HomeController getBController() {
-        return (HomeController) super.getBController();
-    }
-
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
 
-        setBController(new HomeController());
         viewRentBike.setOnMouseClicked(e -> {
             if(Rent.getBike() == null) {
                 try {

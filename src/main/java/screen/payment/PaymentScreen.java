@@ -61,15 +61,19 @@ public class PaymentScreen extends BaseScreenHandler {
                 if(paymentController.refund(Rent.getDepositFee() - rF,"Refund",Rent.getCard())) {
                     PopupScreen.success("Payment Successfully");
                     Bike bike = Rent.getBike();
+                    System.out.println("Station" + Rent.getStation_id());
                     bike.setStation(Rent.getStation_id());
+                    bike.updateStationIdById(bike.getId(),Rent.getStation_id());
+
                     // save bike;
                     Rent.reset();
                 }
             } catch (IOException ex) {
                 ex.printStackTrace();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
             }
             // ******* Code return bike and save to transaction db **********
-            Rent.reset();
             try {
                 PopupScreen.success("Return Bike Successfully");
             } catch (IOException ex) {
@@ -92,6 +96,9 @@ public class PaymentScreen extends BaseScreenHandler {
         depositFee.setText(Rent.getDepositFee() + "VND");
         time.setText(Rent.thoigiandathue() + " phút");
         refund.setText(Rent.getDepositFee() - rF + " VND");
+        File file2 = new File(Configs.IMAGE_PATH + "/" +Rent.getBike().getImagePath());
+        javafx.scene.image.Image img2 = new Image(file2.toURI().toString());
+        bikeImage.setImage(img2);
     }
     public void requestPayment() throws IOException, SQLException {
 //        setPreviousScreen();
