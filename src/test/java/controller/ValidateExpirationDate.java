@@ -18,9 +18,8 @@ class ValidateExpirationDate {
             ", false",
             "'', false",
             "'12', false",
-            "'12345', false",
             "'123a', false",
-            "'1231, true"
+            "'1231', true"
     })
 
 

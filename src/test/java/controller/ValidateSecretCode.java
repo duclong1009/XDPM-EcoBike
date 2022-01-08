@@ -20,7 +20,7 @@ class ValidateSecretCode {
             "'12', false",
             "'123451234561234512345', false",
             "'123a bscd df', false",
-            "'1231asbg, true"
+            "'1231asbg', true"
     })
 
 

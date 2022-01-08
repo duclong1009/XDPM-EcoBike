@@ -46,10 +46,9 @@ public class BarcodeController extends BaseController{
         if (s == null || s.trim().isEmpty()) {
             return false;
         }
-        Pattern p = Pattern.compile("[A-Za-z0-9]");
+        Pattern p = Pattern.compile("[^A-Za-z0-9]");
         Matcher m = p.matcher(s);
         boolean b = m.find();
         return !b;
     }
-
 }

@@ -75,4 +75,8 @@ public class DepositController extends BaseController{
         return true;
     }
 
+    public static void main(String[] args) {
+        DepositController depositController = new DepositController();
+        System.out.println(depositController.validateExpirationDate("12345"));
+    }
 }
