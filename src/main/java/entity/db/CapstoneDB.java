@@ -8,6 +8,10 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Logger;
 
+/**
+ * Ket noi DB
+ * @author tandb
+ */
 public class CapstoneDB {
     private static Logger LOGGER = Utils.getLogger(Connection.class.getName());
     private static Connection connection;

@@ -6,6 +6,10 @@ import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Dat coc, danh gia thong tin the
+ * @author longnd
+ */
 public class DepositController extends BaseController{
     private HashMap<Integer, Integer> depositTable;
     public DepositController() {

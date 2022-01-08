@@ -9,7 +9,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Barcode
+ * Quan ly danh gia va gui barcode len server
+ * @author dnkhanh
  */
 public class BarcodeController extends BaseController{
     private BarcodeInterface barcodeConnector;
@@ -19,7 +20,7 @@ public class BarcodeController extends BaseController{
     }
 
     /**
-     *
+     * Gui barcode len server
      * @param barcode
      * @return Bike id
      * @throws IOException
@@ -36,6 +37,11 @@ public class BarcodeController extends BaseController{
         return String.valueOf(100 * id);
     }
 
+    /**
+     * Danh gia barcode
+     * @param s
+     * @return
+     */
     public boolean validateBarcode(String s) {
         if (s == null || s.trim().isEmpty()) {
             return false;

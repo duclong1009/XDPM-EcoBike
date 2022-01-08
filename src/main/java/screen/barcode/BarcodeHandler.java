@@ -24,6 +24,10 @@ import java.net.URISyntaxException;
 import java.sql.SQLException;
 import java.util.logging.Logger;
 
+/**
+ * Man hinh barcode
+ * @author dnkhanh
+ */
 public class BarcodeHandler extends BaseScreenHandler {
     public static Logger LOGGER = Utils.getLogger(BarcodeHandler.class.getName());
     @FXML
