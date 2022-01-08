@@ -10,10 +10,11 @@ import java.io.IOException;
 import java.text.ParseException;
 
 public class PaymentController extends BaseController{
+    InterbankSubsystem interbankInterface =  new InterbankSubsystem();
+
     public boolean payRental(int amount, String content, String cardCode, String owner,String cvvCode, String dateExpired) throws IOException {
         CreditCard card = new CreditCard(cardCode,owner,cvvCode,dateExpired);
 //        CreditCard card = new CreditCard();
-        InterbankSubsystem interbankInterface =  new InterbankSubsystem();
         try {
             PaymentTransaction paymentTransaction = interbankInterface.payRental(card,amount,content);
             PopupScreen.success("Deposit Successfully");
@@ -26,7 +27,6 @@ public class PaymentController extends BaseController{
     }
 
     public boolean refund(int amount,String content ,CreditCard card) {
-        InterbankSubsystemController interbankInterface = new InterbankSubsystemController();
         try {
             interbankInterface.refund(card, amount, content);
             return true;
