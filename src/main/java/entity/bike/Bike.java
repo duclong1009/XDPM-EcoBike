@@ -161,9 +161,3 @@ public class Bike {
         }
 
     }
-
-
-    public static void main(String[] args) throws SQLException {
-        Bike bike = new Bike();
-    }
-}
