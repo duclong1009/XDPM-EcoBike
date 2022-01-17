@@ -24,6 +24,10 @@ import java.net.URISyntaxException;
 import java.sql.SQLException;
 import java.util.logging.Logger;
 
+/**
+ * Man hinh barcode
+ * @author dnkhanh
+ */
 public class BarcodeHandler extends BaseScreenHandler {
     public static Logger LOGGER = Utils.getLogger(BarcodeHandler.class.getName());
     @FXML
@@ -55,8 +59,8 @@ public class BarcodeHandler extends BaseScreenHandler {
                 String bc =  barcode.getText();
                 int id = barcodeController.convertBarcodeToId(bc);
 
-                if(bc.equals("")) {
-                    PopupScreen.error("Vui lòng nhập barcode");
+                if(!barcodeController.validateBarcode(bc)) {
+                    PopupScreen.error("Barcode is invalid");
                 }
                 else {
                     if(Rent.getBike() != null ) {

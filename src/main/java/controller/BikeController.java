@@ -5,6 +5,11 @@ import entity.bike.Bike;
 import java.sql.SQLException;
 import java.util.List;
 
+
+/**
+ * Tim kiem va lay danh sach xe
+ * @author longnd
+ */
 public class BikeController extends BaseController{
     private Bike bike;
     public BikeController() {

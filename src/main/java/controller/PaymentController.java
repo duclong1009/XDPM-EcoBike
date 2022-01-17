@@ -9,6 +9,10 @@ import screen.popup.PopupScreen;
 import java.io.IOException;
 import java.text.ParseException;
 
+/**
+ * Quan ly thanh toan
+ * @author longnd
+ */
 public class PaymentController extends BaseController{
     InterbankSubsystem interbankInterface =  new InterbankSubsystem();
 

@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1365.0" xmlns="http://javafx.com/javafx/15" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1365.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox prefHeight="100.0" prefWidth="133.0">
          <children>
@@ -32,13 +32,16 @@
          <children>
             <Pane prefHeight="100.0" prefWidth="1112.0">
                <children>
-                  <Label layoutX="26.0" layoutY="27.0" text="Station Details">
+                  <Label layoutX="26.0" layoutY="27.0" text="Station Details" textFill="#430dae">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
                   <TextField fx:id="searchField" layoutX="208.0" layoutY="27.0" prefHeight="35.0" prefWidth="593.0" />
-                  <Button fx:id="searchButton" layoutX="832.0" layoutY="27.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="88.0" text="Search" />
+                  <Button fx:id="searchButton" layoutX="832.0" layoutY="27.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="88.0" style="-fx-background-color: BLUE;" text="Search" textFill="#f2eeee">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font></Button>
                </children>
             </Pane>
          </children>
@@ -47,12 +50,15 @@
          <children>
             <Pane prefHeight="98.0" prefWidth="687.0">
                <children>
-                  <Text layoutX="14.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Station" wrappingWidth="97.341796875">
+                  <Text fill="#d70a0a" layoutX="14.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Station" wrappingWidth="97.341796875">
                      <font>
                         <Font name="System Bold Italic" size="18.0" />
                      </font>
                   </Text>
-                  <Text fx:id="stationName" layoutX="111.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="498.13671875" />
+                  <Text fx:id="stationName" fill="#dd0e0e" layoutX="111.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="498.13671875">
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font></Text>
                </children>
             </Pane>
          </children>
@@ -61,12 +67,15 @@
          <children>
             <Pane prefHeight="100.0" prefWidth="694.0" style="-fx-border-color: #33adff;">
                <children>
-                  <Text layoutX="24.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Location" wrappingWidth="97.341796875">
+                  <Text fill="#da0b0b" layoutX="24.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Location" wrappingWidth="97.341796875">
                      <font>
                         <Font name="System Bold Italic" size="18.0" />
                      </font>
                   </Text>
-                  <Text fx:id="locationName" layoutX="134.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="498.13671875" />
+                  <Text fx:id="locationName" fill="#d70b0b" layoutX="134.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="498.13671875">
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font></Text>
                </children>
             </Pane>
          </children>

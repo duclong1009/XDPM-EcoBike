@@ -11,17 +11,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-public class Bike {
+public class ElectricBike extends Bike {
 
     private static Logger LOGGER = Utils.getLogger(Bike.class.getName());
-    protected int id;
-    protected String bikeName;
-    protected int status;
-    protected int category_id;
-    protected int station_id;
-    protected String imagePath;
+    protected float pin;
 
-    public Bike() {}
+    public ElectricBike() {
+        super();
+    }
 
     public String getImagePath() {
         return imagePath;
@@ -31,13 +28,9 @@ public class Bike {
         this.imagePath = imagePath;
     }
 
-    public Bike(int id, String bikeName, int status, int category_id, int station_id, String imagePath) {
-        this.id = id;
-        this.bikeName = bikeName;
-        this.status = status;
-        this.category_id = category_id;
-        this.station_id = station_id;
-        this.imagePath = imagePath;
+    public ElectricBike(int id, String bikeName, int status, int category_id, int station_id, String imagePath,float pin) {
+        super(id,bikeName,status,category_id,station_id,imagePath);
+        this.pin = pin;
     }
 
     public Bike getBikeById(int id) throws SQLException{
@@ -47,7 +40,7 @@ public class Bike {
         ResultSet res = stm.executeQuery(sql);
         if(res.next()) {
             System.out.println("Not null");
-            Bike b = new Bike(res.getInt("id"), res.getString("bike_name"), res.getInt("Status"), res.getInt("category_id"), res.getInt("station_id"),res.getString("image_path"));
+            ElectricBike b = new ElectricBike(res.getInt("id"), res.getString("bike_name"), res.getInt("Status"), res.getInt("category_id"), res.getInt("station_id"),res.getString("image_path"), res.getFloat("pin"));
             return b;
         }
         return null;
@@ -60,7 +53,7 @@ public class Bike {
         ArrayList bikeList = new ArrayList();
         while(res.next()) {
             LOGGER.info("Exist bike query!!");
-            Bike b = new Bike(res.getInt("id"), res.getString("bike_name"),  res.getInt("Status"), res.getInt("category_id"), res.getInt("station_id"),res.getString("image_path"));
+            ElectricBike b = new ElectricBike(res.getInt("id"), res.getString("bike_name"), res.getInt("Status"), res.getInt("category_id"), res.getInt("station_id"),res.getString("image_path"), res.getFloat("pin"));
             bikeList.add(b);
         }
         return bikeList;
@@ -71,6 +64,7 @@ public class Bike {
         return "Bike{" +
                 "id=" + id +
                 ", bikeName='" + bikeName + '\'' +
+                ", pin=" + pin +
                 ", status=" + status +
                 ", category_id=" + category_id +
                 ", station_id=" + station_id +
@@ -94,6 +88,13 @@ public class Bike {
         this.bikeName = bikeName;
     }
 
+    public float getPin() {
+        return pin;
+    }
+
+    public void setPin(float pin) {
+        this.pin = pin;
+    }
 
     public int getStatus() {
         return status;
@@ -126,7 +127,7 @@ public class Bike {
         ArrayList bikeList = new ArrayList();
         while(res.next()) {
             LOGGER.info("Exist bike query!!");
-            Bike b = new Bike(res.getInt("id"), res.getString("bike_name"), res.getInt("Status"), res.getInt("category_id"), res.getInt("station_id"),res.getString("image_path"));
+            ElectricBike b = new ElectricBike(res.getInt("id"), res.getString("bike_name"), res.getInt("Status"), res.getInt("category_id"), res.getInt("station_id"),res.getString("image_path"), res.getFloat("pin"));
             bikeList.add(b);
             System.out.println("Len res " + bikeList.size());
         }
@@ -161,3 +162,9 @@ public class Bike {
         }
 
     }
+
+
+    public static void main(String[] args) throws SQLException {
+        Bike bike = new Bike();
+    }
+}

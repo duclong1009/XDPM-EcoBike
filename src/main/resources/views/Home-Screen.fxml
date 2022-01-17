@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/15" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox fx:id="hBox" layoutX="7.0" layoutY="216.0" prefHeight="552.0" prefWidth="1366.0">
          <children>
@@ -34,17 +34,20 @@
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="searchMenu" layoutX="29.0" layoutY="36.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="77.0" text="Search" />
+                  <Button fx:id="searchMenu" layoutX="29.0" layoutY="36.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="113.0" style="-fx-background-color: BLUE;" text="Search" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font></Button>
                </children>
             </Pane>
          </children>
       </HBox>
-      <Button fx:id="viewRentBike" layoutX="783.0" layoutY="157.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="180.0" text="View Rental Bike">
+      <Button fx:id="viewRentBike" layoutX="783.0" layoutY="157.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #e81313;" text="View Rental Bike" textFill="#ebebeb">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="rentBike" layoutX="314.0" layoutY="157.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="180.0" text="Rent Bike">
+      <Button fx:id="rentBike" layoutX="314.0" layoutY="157.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #e81313;" text="Rent Bike" textFill="#ebe8e8">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>

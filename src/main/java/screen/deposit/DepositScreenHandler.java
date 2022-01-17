@@ -75,7 +75,10 @@ public class DepositScreenHandler extends BaseScreenHandler {
         submit.setOnMouseClicked(e-> {
             PaymentController paymentController = new PaymentController();
             try {
-                if(paymentController.payRental(depositFees,"DAT COC 400k",securityCode.getText(),cardholderName.getText(),cardNumber.getText(),expirationDate.getText())) {
+                if (!depositController.validateName(cardholderName.getText()) || !depositController.validateCardNumber(cardNumber.getText()) || !depositController.validateExpirationDate(expirationDate.getText()) || !depositController.validateSecurityCode(securityCode.getText())) {
+                    PopupScreen.error("Card info is invalid!");
+                }
+                else if (paymentController.payRental(depositFees,"DAT COC 400k",securityCode.getText(),cardholderName.getText(),cardNumber.getText(),expirationDate.getText())) {
                     PopupScreen.success("Deposit Successfully");
                     Rent.setDepositFee(depositFees);
                     Rent.setBike(bike);
@@ -96,6 +99,10 @@ public class DepositScreenHandler extends BaseScreenHandler {
     }
     public void setInfo(Bike bike) {
         bikeName.setText(bike.getBikeName());
+        File file1 = new File(Configs.IMAGE_PATH + "/" + bike.getImagePath());
+        Image img1 = new Image(file1.toURI().toString());
+        bikeImage.setImage(img1);
+//        bikeImage.setImage(Configs.IMAGE_PATH + "/" + bike.getImagePath());
 
     }
     public void requestToDeposit(BaseScreenHandler prev) {

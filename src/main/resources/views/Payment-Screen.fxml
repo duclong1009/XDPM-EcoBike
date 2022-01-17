@@ -9,7 +9,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox prefHeight="122.0" prefWidth="200.0">
@@ -25,7 +24,7 @@
          <children>
             <Pane prefHeight="532.0" prefWidth="342.0">
                <children>
-                  <Text fx:id="bikeName" layoutX="77.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="130.13671875">
+                  <Text fx:id="bikeName" fill="#252ad0" layoutX="14.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="296.13671875">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -39,54 +38,57 @@
          <children>
             <Pane prefHeight="532.0" prefWidth="921.0">
                <children>
-                  <Label layoutX="88.0" layoutY="67.0" text="Deposit fee">
+                  <Label layoutX="88.0" layoutY="67.0" text="Deposit fee" textFill="#252ad0">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="84.0" layoutY="129.0" text="Time">
+                  <Label layoutX="84.0" layoutY="129.0" text="Time" textFill="#252ad0">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="84.0" layoutY="275.0" text="Refund">
+                  <Label layoutX="84.0" layoutY="275.0" text="Refund" textFill="#252ad0">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="84.0" layoutY="206.0" text="Rental fee">
+                  <Label layoutX="84.0" layoutY="206.0" text="Rental fee" textFill="#252ad0">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Text fx:id="depositFee" layoutX="301.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="130.13671875">
+                  <Text fx:id="depositFee" fill="#252ad0" layoutX="301.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="130.13671875">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Text>
-                  <Text fx:id="time" layoutX="301.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="130.13671875">
+                  <Text fx:id="time" fill="#252ad0" layoutX="301.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="130.13671875">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Text>
-                  <Text fx:id="rentalFee" layoutX="301.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="130.13671875">
+                  <Text fx:id="rentalFee" fill="#252ad0" layoutX="301.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="130.13671875">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Text>
-                  <Text fx:id="refund" layoutX="301.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="130.13671875">
+                  <Text fx:id="refund" fill="#252ad0" layoutX="296.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="177.13671875">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Text>
-                  <Button fx:id="returnButton" layoutX="389.0" layoutY="396.0" mnemonicParsing="false" text="Return" />
+                  <Button fx:id="returnButton" layoutX="385.0" layoutY="395.0" mnemonicParsing="false" style="-fx-background-color: #e81313;" text="Return" textAlignment="CENTER" textFill="#f2f2f2">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font></Button>
                </children>
             </Pane>
          </children>
       </HBox>
       <Label layoutX="226.0" layoutY="27.0" prefHeight="53.0" prefWidth="266.0" text="Payment" textFill="#2219d7">
          <font>
-            <Font size="36.0" />
+            <Font name="System Bold" size="36.0" />
          </font>
       </Label>
    </children>
