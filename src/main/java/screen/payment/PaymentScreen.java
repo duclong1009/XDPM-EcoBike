@@ -54,7 +54,12 @@ public class PaymentScreen extends BaseScreenHandler {
         });
 
         returnButton.setOnMouseClicked(e-> {
-            int rF = new RentBikeController(new CalFee1()).calRentalFee(Rent.getBike().getCategory());
+            int rF = 0;
+            try {
+                rF = new RentBikeController(new CalFee1()).calRentalFee(Rent.getBike().getCategory());
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
             LOGGER.info("User clicked to return");
             try {
                 PaymentController paymentController = new PaymentController();

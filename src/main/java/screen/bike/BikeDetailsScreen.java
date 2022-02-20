@@ -18,6 +18,7 @@ import screen.station.BikeScreenHandler;
 import utils.API;
 import utils.Configs;
 import utils.Utils;
+import utils.calculateDepositFee.CalDepositFee1;
 
 import java.awt.*;
 import java.io.File;
@@ -77,7 +78,7 @@ public class BikeDetailsScreen extends BaseScreenHandler {
         bikeName.setText((b.getBikeName()));
 //        File file2 = new File(Configs.IMAGE_PATH + "/" + b.getStatus())
 //        bikeImage.setImage();
-        depositFee.setText(String.valueOf(new DepositController().calDepositFee(b.getCategory())) + " VND");
+        depositFee.setText(String.valueOf(new DepositController(new CalDepositFee1()).calDepositFee(b.getFees(), b.getCategory())) + " VND");
         description.setText(String.valueOf(b.getStatus()));
         Category category = new Category();
         int cate = b.getCategory();

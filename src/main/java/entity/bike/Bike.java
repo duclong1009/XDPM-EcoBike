@@ -20,8 +20,9 @@ public class Bike {
     protected int category_id;
     protected int station_id;
     protected String imagePath;
-
-    public Bike() {}
+    protected  int fees;
+    public Bike() {
+    }
 
     public String getImagePath() {
         return imagePath;
@@ -38,16 +39,34 @@ public class Bike {
         this.category_id = category_id;
         this.station_id = station_id;
         this.imagePath = imagePath;
+
+    }
+    public Bike(int id, String bikeName, int status, int category_id, int station_id, String imagePath,int fees) {
+        this.id = id;
+        this.bikeName = bikeName;
+        this.status = status;
+        this.category_id = category_id;
+        this.station_id = station_id;
+        this.imagePath = imagePath;
+        this.fees = fees;
     }
 
-    public Bike getBikeById(int id) throws SQLException{
+    public int getFees() {
+        return fees;
+    }
+
+    public void setFees(int fees) {
+        this.fees = fees;
+    }
+
+    public Bike getBikeById(int id) throws SQLException {
         String sql = "SELECT * FROM bike " + "where id=" + id + ";";
         System.out.println("query : " + sql);
         Statement stm = CapstoneDB.getConnection().createStatement();
         ResultSet res = stm.executeQuery(sql);
-        if(res.next()) {
+        if (res.next()) {
             System.out.println("Not null");
-            Bike b = new Bike(res.getInt("id"), res.getString("bike_name"), res.getInt("Status"), res.getInt("category_id"), res.getInt("station_id"),res.getString("image_path"));
+            Bike b = new Bike(res.getInt("id"), res.getString("bike_name"), res.getInt("Status"), res.getInt("category_id"), res.getInt("station_id"), res.getString("image_path"));
             return b;
         }
         return null;
@@ -58,9 +77,9 @@ public class Bike {
         Statement stm = CapstoneDB.getConnection().createStatement();
         ResultSet res = stm.executeQuery(query);
         ArrayList bikeList = new ArrayList();
-        while(res.next()) {
+        while (res.next()) {
             LOGGER.info("Exist bike query!!");
-            Bike b = new Bike(res.getInt("id"), res.getString("bike_name"),  res.getInt("Status"), res.getInt("category_id"), res.getInt("station_id"),res.getString("image_path"));
+            Bike b = new Bike(res.getInt("id"), res.getString("bike_name"), res.getInt("Status"), res.getInt("category_id"), res.getInt("station_id"), res.getString("image_path"));
             bikeList.add(b);
         }
         return bikeList;
@@ -102,6 +121,7 @@ public class Bike {
     public void setStatus(int status) {
         this.status = status;
     }
+
     public int getCategory() {
         return category_id;
     }
@@ -118,21 +138,22 @@ public class Bike {
         this.station_id = station;
     }
 
-    public List<Bike>  findNameBike(String search,String s_id) throws SQLException {
-        String query = "SELECT * FROM bike " + "where bike_name LIKE '%" + search + "%' AND station_id = "+ s_id +";";
+    public List<Bike> findNameBike(String search, String s_id) throws SQLException {
+        String query = "SELECT * FROM bike " + "where bike_name LIKE '%" + search + "%' AND station_id = " + s_id + ";";
         System.out.println(query);
         Statement stm = CapstoneDB.getConnection().createStatement();
         ResultSet res = stm.executeQuery(query);
         ArrayList bikeList = new ArrayList();
-        while(res.next()) {
+        while (res.next()) {
             LOGGER.info("Exist bike query!!");
-            Bike b = new Bike(res.getInt("id"), res.getString("bike_name"), res.getInt("Status"), res.getInt("category_id"), res.getInt("station_id"),res.getString("image_path"));
+            Bike b = new Bike(res.getInt("id"), res.getString("bike_name"), res.getInt("Status"), res.getInt("category_id"), res.getInt("station_id"), res.getString("image_path"));
             bikeList.add(b);
             System.out.println("Len res " + bikeList.size());
         }
         return bikeList;
     }
-    public void updateStatusById(int id) throws SQLException{
+
+    public void updateStatusById(int id) throws SQLException {
         try {
             String query = "update bike set status = ? where id = ?";
             Bike b = new Bike();
@@ -142,22 +163,21 @@ public class Bike {
             preparedStmt.setInt(1, stt);
             preparedStmt.setInt(2, id);
             preparedStmt.executeUpdate();
-        }
-        catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public void updateStationIdById(int id, int sttId) throws SQLException{
+    public void updateStationIdById(int id, int sttId) throws SQLException {
         try {
             String query = "update bike set station_id = ? where id = ?";
             PreparedStatement preparedStmt = CapstoneDB.getConnection().prepareStatement(query);
             preparedStmt.setInt(1, sttId);
             preparedStmt.setInt(2, id);
             preparedStmt.executeUpdate();
-        }
-        catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
     }
+}
